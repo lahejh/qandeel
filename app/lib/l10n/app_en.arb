@@ -274,5 +274,116 @@
         "type": "String"
       }
     }
+  },
+  "playFromHere": "Play from here",
+  "@playFromHere": {
+    "description": "Verse menu: recite from this verse to the end of the surah."
+  },
+  "playPage": "Play this page",
+  "@playPage": {
+    "description": "Verse menu: recite every verse on this page."
+  },
+  "repeatVerse": "Repeat this verse",
+  "@repeatVerse": {
+    "description": "Verse menu: recite this verse several times."
+  },
+  "repeatPage": "Repeat this page",
+  "@repeatPage": {
+    "description": "Verse menu: recite this page several times."
+  },
+  "repeatCount": "Repeat: {count}×",
+  "@repeatCount": {
+    "description": "Label for the chosen repeat count.",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "pause": "Pause",
+  "@pause": {
+    "description": "Player button."
+  },
+  "resume": "Resume",
+  "@resume": {
+    "description": "Player button."
+  },
+  "stopPlayback": "Stop",
+  "@stopPlayback": {
+    "description": "Player button."
+  },
+  "recitation": "Recitation",
+  "@recitation": {
+    "description": "Settings section title."
+  },
+  "reciter": "Reciter",
+  "@reciter": {
+    "description": "Settings: reciter choice."
+  },
+  "saveRecitations": "Save recitations on this phone",
+  "@saveRecitations": {
+    "description": "Settings switch: stream and save (on) or stream only (off)."
+  },
+  "saveRecitationsHint": "Each verse is downloaded once and then plays without internet. Off: listen online only.",
+  "@saveRecitationsHint": {
+    "description": "Explains the save switch."
+  },
+  "downloads": "Saved recitations",
+  "@downloads": {
+    "description": "Storage screen title and settings entry."
+  },
+  "delete": "Delete",
+  "@delete": {
+    "description": "Delete button."
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button."
+  },
+  "deleteConfirm": "Delete all saved verses recited by {name}?",
+  "@deleteConfirm": {
+    "description": "Confirm deleting one reciter's files.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "savedSize": "{count} verses · {size} MB",
+  "@savedSize": {
+    "description": "Saved verses count and size.",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "nothingSaved": "Nothing saved",
+  "@nothingSaved": {
+    "description": "No files for this reciter."
+  },
+  "connectToDownload": "This verse is not saved on this phone yet. Connect to the internet to download it.",
+  "@connectToDownload": {
+    "description": "Shown when offline and the verse is not saved."
+  },
+  "reciterUnavailable": "Recitation by {name} is not available right now. Would you like to choose another reciter?",
+  "@reciterUnavailable": {
+    "description": "Asks before switching reciter (never switched automatically).",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "notNow": "Not now",
+  "@notNow": {
+    "description": "Dismiss button."
+  },
+  "recitationSource": "Recitation audio: Islamic Network (alquran.cloud), recordings licensed by the reciters or their estates for free, non-commercial use. Recordings of the King Fahd Glorious Qur'an Printing Complex will be used first once they are available again.",
+  "@recitationSource": {
+    "description": "Credit for recitation audio."
   }
 }

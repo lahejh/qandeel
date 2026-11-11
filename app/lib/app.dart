@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'home/home_shell.dart';
 import 'l10n/app_localizations.dart';
 import 'quran/quran.dart';
+import 'audio/recitation_controller.dart';
 import 'quran/quran_scope.dart';
 import 'quran/quran_search.dart';
 import 'quran/reading_state.dart';
@@ -15,6 +16,7 @@ class QandeelApp extends StatelessWidget {
     super.key,
     required this.quran,
     required this.search,
+    this.recitation,
     AppSettings? settings,
     ReadingState? reading,
     this.now,
@@ -23,6 +25,7 @@ class QandeelApp extends StatelessWidget {
 
   final Quran quran;
   final QuranSearch search;
+  final RecitationController? recitation;
   final AppSettings settings;
   final ReadingState reading;
 
@@ -52,6 +55,7 @@ class QandeelApp extends StatelessWidget {
           quran: quran,
           settings: settings,
           search: search,
+          recitation: recitation,
           reading: reading,
           child: child!,
         ),

@@ -200,4 +200,81 @@ class AppLocalizationsEn extends AppLocalizations {
   String moreResults(String count) {
     return 'Showing the first $count. Add another word to narrow the search.';
   }
+
+  @override
+  String get playFromHere => 'Play from here';
+
+  @override
+  String get playPage => 'Play this page';
+
+  @override
+  String get repeatVerse => 'Repeat this verse';
+
+  @override
+  String get repeatPage => 'Repeat this page';
+
+  @override
+  String repeatCount(String count) {
+    return 'Repeat: $count×';
+  }
+
+  @override
+  String get pause => 'Pause';
+
+  @override
+  String get resume => 'Resume';
+
+  @override
+  String get stopPlayback => 'Stop';
+
+  @override
+  String get recitation => 'Recitation';
+
+  @override
+  String get reciter => 'Reciter';
+
+  @override
+  String get saveRecitations => 'Save recitations on this phone';
+
+  @override
+  String get saveRecitationsHint =>
+      'Each verse is downloaded once and then plays without internet. Off: listen online only.';
+
+  @override
+  String get downloads => 'Saved recitations';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String deleteConfirm(String name) {
+    return 'Delete all saved verses recited by $name?';
+  }
+
+  @override
+  String savedSize(String count, String size) {
+    return '$count verses · $size MB';
+  }
+
+  @override
+  String get nothingSaved => 'Nothing saved';
+
+  @override
+  String get connectToDownload =>
+      'This verse is not saved on this phone yet. Connect to the internet to download it.';
+
+  @override
+  String reciterUnavailable(String name) {
+    return 'Recitation by $name is not available right now. Would you like to choose another reciter?';
+  }
+
+  @override
+  String get notNow => 'Not now';
+
+  @override
+  String get recitationSource =>
+      'Recitation audio: Islamic Network (alquran.cloud), recordings licensed by the reciters or their estates for free, non-commercial use. Recordings of the King Fahd Glorious Qur\'an Printing Complex will be used first once they are available again.';
 }

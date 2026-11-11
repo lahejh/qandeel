@@ -433,6 +433,138 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Showing the first {count}. Add another word to narrow the search.'**
   String moreResults(String count);
+
+  /// Verse menu: recite from this verse to the end of the surah.
+  ///
+  /// In en, this message translates to:
+  /// **'Play from here'**
+  String get playFromHere;
+
+  /// Verse menu: recite every verse on this page.
+  ///
+  /// In en, this message translates to:
+  /// **'Play this page'**
+  String get playPage;
+
+  /// Verse menu: recite this verse several times.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat this verse'**
+  String get repeatVerse;
+
+  /// Verse menu: recite this page several times.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat this page'**
+  String get repeatPage;
+
+  /// Label for the chosen repeat count.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat: {count}×'**
+  String repeatCount(String count);
+
+  /// Player button.
+  ///
+  /// In en, this message translates to:
+  /// **'Pause'**
+  String get pause;
+
+  /// Player button.
+  ///
+  /// In en, this message translates to:
+  /// **'Resume'**
+  String get resume;
+
+  /// Player button.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop'**
+  String get stopPlayback;
+
+  /// Settings section title.
+  ///
+  /// In en, this message translates to:
+  /// **'Recitation'**
+  String get recitation;
+
+  /// Settings: reciter choice.
+  ///
+  /// In en, this message translates to:
+  /// **'Reciter'**
+  String get reciter;
+
+  /// Settings switch: stream and save (on) or stream only (off).
+  ///
+  /// In en, this message translates to:
+  /// **'Save recitations on this phone'**
+  String get saveRecitations;
+
+  /// Explains the save switch.
+  ///
+  /// In en, this message translates to:
+  /// **'Each verse is downloaded once and then plays without internet. Off: listen online only.'**
+  String get saveRecitationsHint;
+
+  /// Storage screen title and settings entry.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved recitations'**
+  String get downloads;
+
+  /// Delete button.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
+  /// Cancel button.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// Confirm deleting one reciter's files.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete all saved verses recited by {name}?'**
+  String deleteConfirm(String name);
+
+  /// Saved verses count and size.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} verses · {size} MB'**
+  String savedSize(String count, String size);
+
+  /// No files for this reciter.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing saved'**
+  String get nothingSaved;
+
+  /// Shown when offline and the verse is not saved.
+  ///
+  /// In en, this message translates to:
+  /// **'This verse is not saved on this phone yet. Connect to the internet to download it.'**
+  String get connectToDownload;
+
+  /// Asks before switching reciter (never switched automatically).
+  ///
+  /// In en, this message translates to:
+  /// **'Recitation by {name} is not available right now. Would you like to choose another reciter?'**
+  String reciterUnavailable(String name);
+
+  /// Dismiss button.
+  ///
+  /// In en, this message translates to:
+  /// **'Not now'**
+  String get notNow;
+
+  /// Credit for recitation audio.
+  ///
+  /// In en, this message translates to:
+  /// **'Recitation audio: Islamic Network (alquran.cloud), recordings licensed by the reciters or their estates for free, non-commercial use. Recordings of the King Fahd Glorious Qur\'an Printing Complex will be used first once they are available again.'**
+  String get recitationSource;
 }
 
 class _AppLocalizationsDelegate

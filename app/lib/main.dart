@@ -1,6 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'app.dart';
+import 'audio/audio_files.dart';
+import 'audio/just_audio_backend.dart';
+import 'audio/recitation_controller.dart';
 import 'quran/quran.dart';
 import 'quran/quran_search.dart';
 import 'quran/reading_state.dart';
@@ -18,11 +24,23 @@ Future<void> main() async {
   final search = await QuranSearch.load(quran);
   // Saved on this phone only (settings, last page, bookmarks).
   final store = await DeviceStore.open();
+  final settings = AppSettings.load(store);
+  // Recitation files live in the app's private folder (never shared).
+  final support = await getApplicationSupportDirectory();
+  final files = AudioFiles(Directory('${support.path}/audio'));
+  final recitation = RecitationController(
+    quran: quran,
+    settings: settings,
+    files: files,
+    fetcher: AudioFetcher(files),
+    backend: JustAudioBackend(),
+  );
   runApp(
     QandeelApp(
       quran: quran,
       search: search,
-      settings: AppSettings.load(store),
+      recitation: recitation,
+      settings: settings,
       reading: ReadingState.load(store),
     ),
   );

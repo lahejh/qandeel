@@ -1,0 +1,42 @@
+name: Audio sources check
+
+# Monthly: checks every recitation source still serves the files the app
+# expects (see tools/check_audio_sources.py). On failure, opens a GitHub
+# Issue so a caretaker can switch the source order in
+# app/lib/audio/reciters.dart. Nothing here touches users or their data.
+on:
+  schedule:
+    - cron: '17 6 1 * *'   # 06:17 UTC on the 1st of every month
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check sample files of every reciter and source
+        id: check
+        run: |
+          set -o pipefail
+          python3 tools/check_audio_sources.py | tee result.txt
+      - name: Open an issue on failure
+        if: failure() && steps.check.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo "The monthly recitation source check failed on $(date -u +%Y-%m-%d)."
+            echo
+            echo "What to do: see docs/NEXT-STEPS.md (step 5) and app/lib/audio/reciters.dart."
+            echo
+            echo '```'
+            cat result.txt
+            echo '```'
+          } > body.md
+          gh issue create --repo "$GITHUB_REPOSITORY" \
+            --title "Recitation source check failed ($(date -u +%Y-%m))" \
+            --body-file body.md

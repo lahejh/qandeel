@@ -103,6 +103,28 @@ the Tanzil Uthmani text by verse reference, not from the azkar file (CLAUDE.md �
   EveryAyah; terms: free, key-less, cache aggressively; recordings keep their own copyrights.
 - mp3quran.net (backup 2): still needs written permission — owner chose no emails for now.
 
+## Step 5 — Recitation audio: built (2026-11-11)
+- Owner decisions: Islamic Network now, King Fahd Complex as source #1 again when its files return;
+  packages `just_audio`, `path_provider`, `http` approved (`crypto`, Dart team, used for MD5 — it was
+  already pulled in by these); default reciter **Mahmoud Khalil Al-Husary** (best for children).
+- Reciters: Al-Husary, Ali Al-Huthaify, Maher Al-Muaiqly, Muhammad Ayyoub (Hafs, murattal, 128 kbps).
+  To add the Complex later: give its `ReciterSource` URLs in `app/lib/audio/reciters.dart` and put it
+  first in each reciter's `sources` list — nothing else changes.
+- `lib/audio/`: `reciters.dart` (catalogue + source order), `audio_files.dart` (one file per verse in
+  the app's private folder, MD5 check against the ETag, same-reciter failover, "connect to download"),
+  `recitation_controller.dart` (play from verse / page, repeat verse or page 3/5/10×, saved file →
+  download-once or stream → message; asks before switching reciter, never automatic),
+  `just_audio_backend.dart`, `player_bar.dart` (verse, reciter · source credit, pause/stop),
+  `downloads_screen.dart` (size per reciter, delete).
+- Reader follows the recited verse across pages and highlights it. Settings: reciter, "Save
+  recitations on this phone" (default on = stream and save; off = stream only), Saved recitations.
+- Monthly GitHub Action `audio-sources.yml` runs `tools/check_audio_sources.py` (sample verses of
+  every reciter/source, MD5) and opens an issue on failure.
+- Android release manifest now has INTERNET (only for recitation the user taps).
+- **Open:** "Wi-Fi only" toggle needs a package to know the network type (`connectivity_plus`) —
+  waiting for owner approval; until then downloads are allowed on any network.
+  Background playback / lock-screen controls would need `just_audio_background` (not added).
+
 ## Still open from step 1
 - Quran font is Amiri for now. Switch to KFGQPC Uthmanic font once its license page is saved to Drive.
 - Exact 15-line Madinah page layout (needs QUL line-layout data + KFGQPC fonts; check licenses first).

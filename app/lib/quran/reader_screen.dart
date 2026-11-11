@@ -1,6 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import '../audio/player_bar.dart';
+import '../audio/recitation_controller.dart';
 import '../l10n/app_localizations.dart';
 import '../settings/app_settings.dart';
 import '../theme.dart';
@@ -39,6 +41,11 @@ class _ReaderScreenState extends State<ReaderScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    final recitation = QuranScope.of(context).recitation;
+    if (recitation != _recitation) {
+      _recitation?.removeListener(_followRecitation);
+      _recitation = recitation?..addListener(_followRecitation);
+    }
     // Record the opened page (after this frame, to avoid notifying listeners
     // during build).
     final reading = QuranScope.of(context).reading;
@@ -49,8 +56,25 @@ class _ReaderScreenState extends State<ReaderScreen> {
 
   @override
   void dispose() {
+    _recitation?.removeListener(_followRecitation);
     _controller.dispose();
     super.dispose();
+  }
+
+  RecitationController? _recitation;
+
+  /// Turns to the page of the verse being recited.
+  void _followRecitation() {
+    final ref = _recitation?.current;
+    if (ref == null || !mounted || !_controller.hasClients) return;
+    final page = QuranScope.of(context).quran.pageOf(ref);
+    if (page != _page) {
+      _controller.animateToPage(
+        page - 1,
+        duration: const Duration(milliseconds: 350),
+        curve: Curves.easeInOut,
+      );
+    }
   }
 
   void _onPageChanged(int index) {
@@ -132,6 +156,9 @@ class _ReaderScreenState extends State<ReaderScreen> {
           ],
         ),
       ),
+      bottomNavigationBar: QuranScope.of(context).recitation == null
+          ? null
+          : PlayerBar(controller: QuranScope.of(context).recitation!),
       body: SafeArea(
         top: false,
         // Mushaf page order: page 2 is to the left of page 1.
@@ -142,7 +169,11 @@ class _ReaderScreenState extends State<ReaderScreen> {
             itemCount: Quran.pageCount,
             onPageChanged: _onPageChanged,
             itemBuilder: (context, index) => ListenableBuilder(
-              listenable: QuranScope.of(context).settings,
+              // Redraw for text-size changes and the verse being recited.
+              listenable: Listenable.merge([
+                QuranScope.of(context).settings,
+                QuranScope.of(context).recitation,
+              ]),
               builder: (context, _) => MushafPage(
                 key: ValueKey(index),
                 page: index + 1,
@@ -199,36 +230,46 @@ class _MushafPageState extends State<MushafPage> {
     await showModalBottomSheet<void>(
       context: context,
       showDragHandle: true,
+      // Scrolls on small screens and with large text.
+      isScrollControlled: true,
       builder: (sheetContext) {
         final marked = scope.reading.isBookmarked(ref);
         return SafeArea(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
-                child: Text(
-                  l10n.verseRef(
-                    surahName(context, surah),
-                    localNumber(context, ref.ayah),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+                  child: Text(
+                    l10n.verseRef(
+                      surahName(context, surah),
+                      localNumber(context, ref.ayah),
+                    ),
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
-                  style: Theme.of(context).textTheme.titleMedium,
                 ),
-              ),
-              ListTile(
-                leading: Icon(
-                  marked
-                      ? Icons.bookmark_remove_outlined
-                      : Icons.bookmark_add_outlined,
+                if (scope.recitation != null)
+                  _RecitationOptions(
+                    verse: ref,
+                    page: widget.page,
+                    onChosen: () => Navigator.of(sheetContext).pop(),
+                  ),
+                ListTile(
+                  leading: Icon(
+                    marked
+                        ? Icons.bookmark_remove_outlined
+                        : Icons.bookmark_add_outlined,
+                  ),
+                  title: Text(marked ? l10n.removeBookmark : l10n.addBookmark),
+                  onTap: () {
+                    scope.reading.toggleBookmark(ref);
+                    Navigator.of(sheetContext).pop();
+                  },
                 ),
-                title: Text(marked ? l10n.removeBookmark : l10n.addBookmark),
-                onTap: () {
-                  scope.reading.toggleBookmark(ref);
-                  Navigator.of(sheetContext).pop();
-                },
-              ),
-              const SizedBox(height: 8),
-            ],
+                const SizedBox(height: 8),
+              ],
+            ),
           ),
         );
       },
@@ -291,7 +332,10 @@ class _MushafPageState extends State<MushafPage> {
         }
       }
       final marked = scope.reading.isBookmarked(v.ref);
-      final selected = _selected == v.ref || widget.highlight == v.ref;
+      final selected =
+          _selected == v.ref ||
+          widget.highlight == v.ref ||
+          scope.recitation?.current == v.ref;
       spans.add(
         TextSpan(
           text: v.displayText,
@@ -403,6 +447,92 @@ class _VerseEnd extends StatelessWidget {
           color: color,
         ),
       ),
+    );
+  }
+}
+
+/// Recitation choices in the verse menu, with a repeat count.
+class _RecitationOptions extends StatefulWidget {
+  const _RecitationOptions({
+    required this.verse,
+    required this.page,
+    required this.onChosen,
+  });
+
+  final VerseRef verse;
+  final int page;
+  final VoidCallback onChosen;
+
+  @override
+  State<_RecitationOptions> createState() => _RecitationOptionsState();
+}
+
+class _RecitationOptionsState extends State<_RecitationOptions> {
+  static const counts = [3, 5, 10];
+  int _repeat = 3;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final scope = QuranScope.of(context);
+    final player = scope.recitation!;
+    final onPage = scope.quran.versesOnPage(widget.page);
+    final first = onPage.first.ref, last = onPage.last.ref;
+    void go(Future<void> Function() action) {
+      widget.onChosen();
+      action();
+    }
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        ListTile(
+          leading: const Icon(Icons.play_arrow_rounded),
+          title: Text(l10n.playFromHere),
+          onTap: () => go(() => player.playFrom(widget.verse)),
+        ),
+        ListTile(
+          leading: const Icon(Icons.menu_book_outlined),
+          title: Text(l10n.playPage),
+          onTap: () => go(() => player.playRange(first, last)),
+        ),
+        ListTile(
+          leading: const Icon(Icons.repeat_one_rounded),
+          title: Text(l10n.repeatVerse),
+          trailing: Text('${localNumber(context, _repeat)}×'),
+          onTap: () => go(
+            () => player.playRange(
+              widget.verse,
+              widget.verse,
+              repeatEach: _repeat,
+            ),
+          ),
+        ),
+        ListTile(
+          leading: const Icon(Icons.repeat_rounded),
+          title: Text(l10n.repeatPage),
+          trailing: Text('${localNumber(context, _repeat)}×'),
+          onTap: () =>
+              go(() => player.playRange(first, last, repeatRange: _repeat)),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+          child: Wrap(
+            spacing: 8,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              Text(l10n.repeatCount(localNumber(context, _repeat))),
+              for (final n in counts)
+                ChoiceChip(
+                  label: Text('${localNumber(context, n)}×'),
+                  selected: _repeat == n,
+                  onSelected: (_) => setState(() => _repeat = n),
+                ),
+            ],
+          ),
+        ),
+        const Divider(height: 16),
+      ],
     );
   }
 }

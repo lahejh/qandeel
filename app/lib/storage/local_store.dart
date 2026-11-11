@@ -26,6 +26,9 @@ class StoreKeys {
   static const quranFontSize = 'settings.quranFontSize'; // e.g. "26"
   static const lastReadPage = 'quran.lastReadPage'; // "1".."604"
   static const bookmarks = 'quran.bookmarks'; // "2:255,18:10"
+  static const reciter = 'audio.reciter'; // reciter id, e.g. "husary"
+  static const saveRecitations = 'audio.save'; // "true" = stream and save
+  static const wifiOnly = 'audio.wifiOnly'; // "true" = save only on Wi-Fi
 
   static const all = {
     locale,
@@ -33,6 +36,9 @@ class StoreKeys {
     quranFontSize,
     lastReadPage,
     bookmarks,
+    reciter,
+    saveRecitations,
+    wifiOnly,
   };
 }
 

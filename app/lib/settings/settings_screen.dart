@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../audio/downloads_screen.dart';
+import '../audio/reciters.dart';
 import '../l10n/app_localizations.dart';
+import '../quran/quran_scope.dart';
 import 'app_settings.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -66,10 +69,52 @@ class SettingsScreen extends StatelessWidget {
               ),
             ),
             const Divider(),
+            _Header(l10n.recitation),
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(16, 4, 16, 0),
+              child: Text(l10n.reciter, style: theme.textTheme.bodySmall),
+            ),
+            RadioGroup<String>(
+              groupValue: Reciters.byId(settings.reciterId).id,
+              onChanged: (id) => settings.reciterId = id,
+              child: Column(
+                children: [
+                  for (final r in Reciters.all)
+                    RadioListTile<String>(
+                      value: r.id,
+                      title: Text(
+                        r.name(Localizations.localeOf(context).languageCode),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+            SwitchListTile(
+              value: settings.saveRecitations,
+              onChanged: (v) => settings.saveRecitations = v,
+              title: Text(l10n.saveRecitations),
+              subtitle: Text(l10n.saveRecitationsHint),
+            ),
+            if (QuranScope.of(context).recitation != null)
+              ListTile(
+                leading: const Icon(Icons.download_done_outlined),
+                title: Text(l10n.downloads),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (_) => const DownloadsScreen(),
+                  ),
+                ),
+              ),
+            const Divider(),
             _Header(l10n.sourcesTitle),
             ListTile(
               leading: const Icon(Icons.menu_book_outlined),
               title: Text(l10n.quranTextSource),
+            ),
+            ListTile(
+              leading: const Icon(Icons.graphic_eq),
+              title: Text(l10n.recitationSource),
             ),
             const Divider(),
             Padding(

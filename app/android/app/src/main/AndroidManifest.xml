@@ -1,4 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Network: ONLY to stream or download recitation the user taps play on
+         (CLAUDE.md §2). No other permissions. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:label="Qandeel"
         android:name="${applicationName}"

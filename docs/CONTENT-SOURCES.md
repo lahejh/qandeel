@@ -7,8 +7,8 @@ Save a copy of every license page / permission email in Google Drive → "01 Lic
 | Quran text (Uthmani) | Tanzil.net | Verbatim copies only, no changes; keep copyright notice; credit Tanzil and link to tanzil.net | in app (content/quran, 2026-11-11) |
 | Quran search text (Simple Clean) | Tanzil.net | Same terms; used only for matching, never shown | in app (content/quran, 2026-11-11) |
 | Quran translations | QuranEnc.com | No modification; name publisher + source; show version number; keep updated; no inappropriate ads | to download |
-| Quran audio (main) | King Fahd Glorious Qur'an Printing Complex | Free general use in apps permitted; credit reciter + Complex | check per-surah vs per-verse |
-| Quran audio (backup 1) | Islamic Network / alquran.cloud | Free, non-commercial redistribution | — |
+| Quran audio (main) | King Fahd Glorious Qur'an Printing Complex | Free general use in apps permitted; credit reciter + Complex | per-verse zips existed; site rebuilt 2026-11 — recitations "coming soon", not used yet |
+| Quran audio (backup 1) | Islamic Network / alquran.cloud | Licensed by reciters/estates for free, non-commercial redistribution; stream/embed/download for personal & educational use; cache aggressively | in app (Husary, Huthaify, Muaiqly, Ayyoub), monthly check |
 | Quran audio (backup 2) | mp3quran.net | Ask for written permission first | to request |
 | Azkar | Hisn al-Muslim — data from Hisn Elmoslem App (GPL-3.0), book under the author's free-distribution permission | Credit the project; show "وقف لله تعالى"; no deletion/addition/change | imported, under verification (docs/azkar-verification.md) |
 | Hadith | HadeethEnc.com | Read Terms and Policies page; email to confirm | to request |

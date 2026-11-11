@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+import '../audio/recitation_controller.dart';
 import '../settings/app_settings.dart';
 import 'quran.dart';
 import 'quran_search.dart';
@@ -13,6 +14,7 @@ class QuranScope extends InheritedNotifier<ReadingState> {
     required this.quran,
     required this.settings,
     required this.search,
+    this.recitation,
     required ReadingState reading,
     required super.child,
   }) : super(notifier: reading);
@@ -21,6 +23,9 @@ class QuranScope extends InheritedNotifier<ReadingState> {
 
   /// App settings (Quran text size is used by the reader).
   final AppSettings settings;
+
+  /// Recitation player, or null where audio is not available (some tests).
+  final RecitationController? recitation;
 
   /// Search index (surah names, verses).
   final QuranSearch search;

@@ -200,4 +200,81 @@ class AppLocalizationsAr extends AppLocalizations {
   String moreResults(String count) {
     return 'تُعرض أول $count نتيجة. أضف كلمة أخرى لتضييق البحث.';
   }
+
+  @override
+  String get playFromHere => 'استمع من هنا';
+
+  @override
+  String get playPage => 'استمع لهذه الصفحة';
+
+  @override
+  String get repeatVerse => 'كرّر هذه الآية';
+
+  @override
+  String get repeatPage => 'كرّر هذه الصفحة';
+
+  @override
+  String repeatCount(String count) {
+    return 'التكرار: $count×';
+  }
+
+  @override
+  String get pause => 'إيقاف مؤقت';
+
+  @override
+  String get resume => 'متابعة';
+
+  @override
+  String get stopPlayback => 'إيقاف';
+
+  @override
+  String get recitation => 'التلاوة';
+
+  @override
+  String get reciter => 'القارئ';
+
+  @override
+  String get saveRecitations => 'حفظ التلاوات على الجهاز';
+
+  @override
+  String get saveRecitationsHint =>
+      'تُحمَّل كل آية مرة واحدة ثم تعمل دون إنترنت. عند الإيقاف: استماع عبر الإنترنت فقط.';
+
+  @override
+  String get downloads => 'التلاوات المحفوظة';
+
+  @override
+  String get delete => 'حذف';
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
+  String deleteConfirm(String name) {
+    return 'حذف كل الآيات المحفوظة بصوت $name؟';
+  }
+
+  @override
+  String savedSize(String count, String size) {
+    return '$count آية · $size م.ب';
+  }
+
+  @override
+  String get nothingSaved => 'لا شيء محفوظ';
+
+  @override
+  String get connectToDownload =>
+      'هذه الآية غير محفوظة على الجهاز بعد. اتصل بالإنترنت لتحميلها.';
+
+  @override
+  String reciterUnavailable(String name) {
+    return 'تلاوة $name غير متاحة الآن. هل تريد اختيار قارئ آخر؟';
+  }
+
+  @override
+  String get notNow => 'ليس الآن';
+
+  @override
+  String get recitationSource =>
+      'التلاوات الصوتية: الشبكة الإسلامية (alquran.cloud)، بترخيص من القرّاء أو ورثتهم للاستخدام المجاني غير التجاري. وستُستخدم تسجيلات مجمع الملك فهد لطباعة المصحف الشريف أولًا عند توفرها مجددًا.';
 }

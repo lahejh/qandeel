@@ -11,13 +11,17 @@ environment:
 # Keep dependencies minimal (see CLAUDE.md). Every package must be approved
 # by the owner and must not send any data anywhere.
 dependencies:
+  crypto: ^3.0.8
   flutter:
     sdk: flutter
   # Part of the Flutter SDK: Arabic/English UI text, RTL layout, dates.
   flutter_localizations:
     sdk: flutter
   # Dart team's localization library, required by flutter_localizations.
+  http: ^1.6.0
   intl: any
+  just_audio: ^0.10.6
+  path_provider: ^2.1.6
   shared_preferences: ^2.5.6
 
 dev_dependencies:
