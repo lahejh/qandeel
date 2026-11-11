@@ -52,3 +52,7 @@ media-masters/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# ---- Python (tools/) ----
+__pycache__/
+*.pyc
