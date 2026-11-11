@@ -1,0 +1,30 @@
+name: qandeel
+description: "Qandeel - free Quran & Azkar app for the whole family"
+# Never published to pub.dev; this is an app, not a package.
+publish_to: 'none'
+
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.13.7
+
+# Keep dependencies minimal (see CLAUDE.md). Every package must be approved
+# by the owner and must not send any data anywhere.
+dependencies:
+  flutter:
+    sdk: flutter
+  # Part of the Flutter SDK: Arabic/English UI text, RTL layout, dates.
+  flutter_localizations:
+    sdk: flutter
+  # Dart team's localization library, required by flutter_localizations.
+  intl: any
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  # Generates AppLocalizations from lib/l10n/*.arb (see l10n.yaml).
+  generate: true
