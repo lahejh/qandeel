@@ -565,6 +565,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Recitation audio: Islamic Network (alquran.cloud), recordings licensed by the reciters or their estates for free, non-commercial use. Recordings of the King Fahd Glorious Qur\'an Printing Complex will be used first once they are available again.'**
   String get recitationSource;
+
+  /// Settings switch: download recitations only on Wi-Fi.
+  ///
+  /// In en, this message translates to:
+  /// **'Save only on Wi-Fi'**
+  String get wifiOnly;
+
+  /// Explains the Wi-Fi only switch.
+  ///
+  /// In en, this message translates to:
+  /// **'On mobile data, recitation plays online without saving.'**
+  String get wifiOnlyHint;
 }
 
 class _AppLocalizationsDelegate

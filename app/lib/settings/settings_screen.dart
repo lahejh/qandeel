@@ -95,6 +95,15 @@ class SettingsScreen extends StatelessWidget {
               title: Text(l10n.saveRecitations),
               subtitle: Text(l10n.saveRecitationsHint),
             ),
+            SwitchListTile(
+              value: settings.wifiOnly,
+              // Only meaningful while saving is on.
+              onChanged: settings.saveRecitations
+                  ? (v) => settings.wifiOnly = v
+                  : null,
+              title: Text(l10n.wifiOnly),
+              subtitle: Text(l10n.wifiOnlyHint),
+            ),
             if (QuranScope.of(context).recitation != null)
               ListTile(
                 leading: const Icon(Icons.download_done_outlined),

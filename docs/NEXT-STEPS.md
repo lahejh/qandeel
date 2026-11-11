@@ -63,11 +63,15 @@ not version by version. Build in dependency order, test each part, commit after 
   diacritics, 42 diacritics differ, 34 letters differ, 16 Quran placeholders; 24 references with
   extra text; 20 count differences; 26 special-font codes in references.
 - Next: a reviewer checks every flagged item in the printed book and fills `content/azkar/REVIEW.md`.
-- Open owner decisions: (1) Quran passages — owner chose "book's text exactly", but this database
-  stores only verse placeholders, so the book's wording is not in it; options: Tanzil Uthmani text,
-  or show only the reference; (2) how to display the special-font honorific codes; (3) reading
-  SQLite in the app needs a package (`sqflite`/`sqlite3`) or a tested lossless export to JSON;
-  (4) the developer's grading field — currently not shown.
+- Owner decisions (2026-11-11, later): (1) Quran passages inside azkar (`QuranText[...]`
+  placeholders) are shown from the verified **Tanzil Uthmani text** (replaces "book's text
+  exactly", which this database cannot provide); (2) special-font codes are displayed as the **full
+  words** (‘ رحمه الله, ’ رضي الله عنها, ^ رضي الله عنهما, × صلى الله عليه وسلم) by display code with
+  a test — the stored file is never changed; (3) the review against the printed book is
+  **postponed** — azkar stays hidden until `content/azkar/REVIEW.md` covers every flagged item.
+- Still open: reading SQLite in the app needs a package (`sqflite`/`sqlite3`) or a tested lossless
+  export to JSON — ask the owner when building the azkar screens; the developer's grading field is
+  not shown.
 
 ## Azkar source candidates considered (2026-11-11)
 Book: Hisn al-Muslim, Sa'id ibn Ali ibn Wahf al-Qahtani; 132 chapters, dhikr numbered 1–267.
@@ -121,8 +125,10 @@ the Tanzil Uthmani text by verse reference, not from the azkar file (CLAUDE.md �
 - Monthly GitHub Action `audio-sources.yml` runs `tools/check_audio_sources.py` (sample verses of
   every reciter/source, MD5) and opens an issue on failure.
 - Android release manifest now has INTERNET (only for recitation the user taps).
-- **Open:** "Wi-Fi only" toggle needs a package to know the network type (`connectivity_plus`) —
-  waiting for owner approval; until then downloads are allowed on any network.
+- "Save only on Wi-Fi" (default on): `connectivity_plus` approved 2026-11-11
+  (`lib/audio/network_check.dart`). On mobile data recitation streams without saving.
+  **Note for CLAUDE.md §2:** this package adds Android's ACCESS_NETWORK_STATE permission (automatic,
+  no prompt, tells the app only Wi-Fi vs mobile data; no user data). Owner to confirm/add to the list.
   Background playback / lock-screen controls would need `just_audio_background` (not added).
 
 ## Still open from step 1

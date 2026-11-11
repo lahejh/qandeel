@@ -6,6 +6,7 @@ import 'package:path_provider/path_provider.dart';
 import 'app.dart';
 import 'audio/audio_files.dart';
 import 'audio/just_audio_backend.dart';
+import 'audio/network_check.dart';
 import 'audio/recitation_controller.dart';
 import 'quran/quran.dart';
 import 'quran/quran_search.dart';
@@ -34,6 +35,7 @@ Future<void> main() async {
     files: files,
     fetcher: AudioFetcher(files),
     backend: JustAudioBackend(),
+    canSaveOnThisNetwork: () => canSaveOnThisNetwork(settings),
   );
   runApp(
     QandeelApp(

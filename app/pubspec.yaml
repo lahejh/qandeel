@@ -11,6 +11,7 @@ environment:
 # Keep dependencies minimal (see CLAUDE.md). Every package must be approved
 # by the owner and must not send any data anywhere.
 dependencies:
+  connectivity_plus: ^7.3.2
   crypto: ^3.0.8
   flutter:
     sdk: flutter

@@ -277,4 +277,11 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get recitationSource =>
       'Recitation audio: Islamic Network (alquran.cloud), recordings licensed by the reciters or their estates for free, non-commercial use. Recordings of the King Fahd Glorious Qur\'an Printing Complex will be used first once they are available again.';
+
+  @override
+  String get wifiOnly => 'Save only on Wi-Fi';
+
+  @override
+  String get wifiOnlyHint =>
+      'On mobile data, recitation plays online without saving.';
 }

@@ -277,4 +277,11 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get recitationSource =>
       'التلاوات الصوتية: الشبكة الإسلامية (alquran.cloud)، بترخيص من القرّاء أو ورثتهم للاستخدام المجاني غير التجاري. وستُستخدم تسجيلات مجمع الملك فهد لطباعة المصحف الشريف أولًا عند توفرها مجددًا.';
+
+  @override
+  String get wifiOnly => 'الحفظ عبر Wi-Fi فقط';
+
+  @override
+  String get wifiOnlyHint =>
+      'عند استخدام بيانات الجوال تُشغَّل التلاوة عبر الإنترنت دون حفظ.';
 }
