@@ -23,8 +23,9 @@ a kids section and an Islamic library — for iPhone and Android. Built as sadaq
 ## Start here
 1. Read `CLAUDE.md` (rules) and `docs/PLAN.md` (what we're building).
 2. Set up your PC: `docs/WORKFLOW.md`.
-3. Yearly maintenance: `docs/YEARLY-UPDATE.md`.
-4. Taking over this project? Read `docs/CARETAKERS.md`.
+3. What to build next: `docs/NEXT-STEPS.md`.
+4. Yearly maintenance: `docs/YEARLY-UPDATE.md`.
+5. Taking over this project? Read `docs/CARETAKERS.md`.
 
 ## License
 Code: GPL-3.0 (see `LICENSE`). Content (Quran text, translations, audio, hadith) keeps its own

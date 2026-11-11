@@ -26,7 +26,7 @@ See docs/CONTENT-SOURCES.md.
 - Interface: Arabic + English first; then Urdu, Indonesian, Turkish, French, Bengali, and more.
 - Full RTL support. Native-speaker review. Never machine-translate Quran/azkar.
 
-## Roadmap
+## Roadmap (build order — released together as ONE complete release, see docs/NEXT-STEPS.md)
 - v1: Quran reader, azkar with counters, reminders, bookmarks, search, Arabic + English, dark mode.
 - v2: Recitation (stream / download once), repeat & range play, more languages and translations.
 - v3: Memorization: hide mode, "what comes next", progress map, revision planner, backup export. Plus "Listen" engine.
