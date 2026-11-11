@@ -28,10 +28,6 @@
   "@comingSoon": {
     "description": "Placeholder text for sections not built yet."
   },
-  "quranPlaceholder": "Read the Quran in the Madinah Mushaf layout, with bookmarks and search.",
-  "@quranPlaceholder": {
-    "description": "Placeholder description of the Quran section."
-  },
   "azkarPlaceholder": "Morning, evening, after-prayer and sleep azkar, with counters and references.",
   "@azkarPlaceholder": {
     "description": "Placeholder description of the Azkar section."
@@ -96,9 +92,17 @@
   "@startReading": {
     "description": "Label on the main home card when nothing has been read yet."
   },
-  "startReadingPlace": "Page 1 · Juz 1",
+  "startReadingPlace": "Page {page} · Juz {juz}",
   "@startReadingPlace": {
-    "description": "Where reading starts: page and juz."
+    "description": "Where reading starts or continues: page and juz.",
+    "placeholders": {
+      "page": {
+        "type": "String"
+      },
+      "juz": {
+        "type": "String"
+      }
+    }
   },
   "start": "Start",
   "@start": {
@@ -123,5 +127,110 @@
   "kidsCardSubtitle": "Letters, surahs and games",
   "@kidsCardSubtitle": {
     "description": "Subtitle on the home Kids card."
+  },
+  "continueReading": "CONTINUE READING",
+  "@continueReading": {
+    "description": "Label on the main home card after the reader was opened."
+  },
+  "continueButton": "Continue",
+  "@continueButton": {
+    "description": "Button that reopens the Quran reader at the last page."
+  },
+  "surahsTab": "Surahs",
+  "@surahsTab": {
+    "description": "Quran index tab: list of surahs."
+  },
+  "juzTab": "Juz",
+  "@juzTab": {
+    "description": "Quran index tab: list of the 30 juz."
+  },
+  "bookmarksTab": "Bookmarks",
+  "@bookmarksTab": {
+    "description": "Quran index tab: bookmarked verses."
+  },
+  "surahTitle": "Surah {name}",
+  "@surahTitle": {
+    "description": "Surah title. name = Arabic name in Arabic UI, transliterated in English UI.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "juzTitle": "Juz {number}",
+  "@juzTitle": {
+    "description": "Title of a juz.",
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "pageNumber": "Page {number}",
+  "@pageNumber": {
+    "description": "Mushaf page number.",
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "verseCount": "{count} verses",
+  "@verseCount": {
+    "description": "Number of verses in a surah (no plural forms, kept simple).",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "meccan": "Meccan",
+  "@meccan": {
+    "description": "Surah revealed in Makkah."
+  },
+  "medinan": "Medinan",
+  "@medinan": {
+    "description": "Surah revealed in Madinah."
+  },
+  "verseRef": "Surah {surah}, verse {verse}",
+  "@verseRef": {
+    "description": "A verse reference.",
+    "placeholders": {
+      "surah": {
+        "type": "String"
+      },
+      "verse": {
+        "type": "String"
+      }
+    }
+  },
+  "startsAt": "Starts at {place}",
+  "@startsAt": {
+    "description": "Where a juz starts.",
+    "placeholders": {
+      "place": {
+        "type": "String"
+      }
+    }
+  },
+  "addBookmark": "Add bookmark",
+  "@addBookmark": {
+    "description": "Verse menu: bookmark this verse."
+  },
+  "removeBookmark": "Remove bookmark",
+  "@removeBookmark": {
+    "description": "Verse menu: remove the bookmark."
+  },
+  "noBookmarks": "No bookmarks yet. Tap a verse while reading to bookmark it.",
+  "@noBookmarks": {
+    "description": "Empty bookmarks list."
+  },
+  "sourcesTitle": "About & sources",
+  "@sourcesTitle": {
+    "description": "Settings: section listing content sources."
+  },
+  "quranTextSource": "Quran text: Tanzil Project (Uthmani, version 1.1), tanzil.net. Used verbatim under the Creative Commons Attribution 3.0 license.",
+  "@quranTextSource": {
+    "description": "Credit for the Quran text (required by Tanzil)."
   }
 }

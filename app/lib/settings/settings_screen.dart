@@ -66,6 +66,12 @@ class SettingsScreen extends StatelessWidget {
               ),
             ),
             const Divider(),
+            _Header(l10n.sourcesTitle),
+            ListTile(
+              leading: const Icon(Icons.menu_book_outlined),
+              title: Text(l10n.quranTextSource),
+            ),
+            const Divider(),
             Padding(
               padding: const EdgeInsets.all(16),
               child: Text(

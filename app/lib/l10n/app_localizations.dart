@@ -140,12 +140,6 @@ abstract class AppLocalizations {
   /// **'Coming soon, in sha Allah'**
   String get comingSoon;
 
-  /// Placeholder description of the Quran section.
-  ///
-  /// In en, this message translates to:
-  /// **'Read the Quran in the Madinah Mushaf layout, with bookmarks and search.'**
-  String get quranPlaceholder;
-
   /// Placeholder description of the Azkar section.
   ///
   /// In en, this message translates to:
@@ -242,11 +236,11 @@ abstract class AppLocalizations {
   /// **'START READING'**
   String get startReading;
 
-  /// Where reading starts: page and juz.
+  /// Where reading starts or continues: page and juz.
   ///
   /// In en, this message translates to:
-  /// **'Page 1 · Juz 1'**
-  String get startReadingPlace;
+  /// **'Page {page} · Juz {juz}'**
+  String startReadingPlace(String page, String juz);
 
   /// Button that opens the Quran reader.
   ///
@@ -283,6 +277,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Letters, surahs and games'**
   String get kidsCardSubtitle;
+
+  /// Label on the main home card after the reader was opened.
+  ///
+  /// In en, this message translates to:
+  /// **'CONTINUE READING'**
+  String get continueReading;
+
+  /// Button that reopens the Quran reader at the last page.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueButton;
+
+  /// Quran index tab: list of surahs.
+  ///
+  /// In en, this message translates to:
+  /// **'Surahs'**
+  String get surahsTab;
+
+  /// Quran index tab: list of the 30 juz.
+  ///
+  /// In en, this message translates to:
+  /// **'Juz'**
+  String get juzTab;
+
+  /// Quran index tab: bookmarked verses.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookmarks'**
+  String get bookmarksTab;
+
+  /// Surah title. name = Arabic name in Arabic UI, transliterated in English UI.
+  ///
+  /// In en, this message translates to:
+  /// **'Surah {name}'**
+  String surahTitle(String name);
+
+  /// Title of a juz.
+  ///
+  /// In en, this message translates to:
+  /// **'Juz {number}'**
+  String juzTitle(String number);
+
+  /// Mushaf page number.
+  ///
+  /// In en, this message translates to:
+  /// **'Page {number}'**
+  String pageNumber(String number);
+
+  /// Number of verses in a surah (no plural forms, kept simple).
+  ///
+  /// In en, this message translates to:
+  /// **'{count} verses'**
+  String verseCount(String count);
+
+  /// Surah revealed in Makkah.
+  ///
+  /// In en, this message translates to:
+  /// **'Meccan'**
+  String get meccan;
+
+  /// Surah revealed in Madinah.
+  ///
+  /// In en, this message translates to:
+  /// **'Medinan'**
+  String get medinan;
+
+  /// A verse reference.
+  ///
+  /// In en, this message translates to:
+  /// **'Surah {surah}, verse {verse}'**
+  String verseRef(String surah, String verse);
+
+  /// Where a juz starts.
+  ///
+  /// In en, this message translates to:
+  /// **'Starts at {place}'**
+  String startsAt(String place);
+
+  /// Verse menu: bookmark this verse.
+  ///
+  /// In en, this message translates to:
+  /// **'Add bookmark'**
+  String get addBookmark;
+
+  /// Verse menu: remove the bookmark.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove bookmark'**
+  String get removeBookmark;
+
+  /// Empty bookmarks list.
+  ///
+  /// In en, this message translates to:
+  /// **'No bookmarks yet. Tap a verse while reading to bookmark it.'**
+  String get noBookmarks;
+
+  /// Settings: section listing content sources.
+  ///
+  /// In en, this message translates to:
+  /// **'About & sources'**
+  String get sourcesTitle;
+
+  /// Credit for the Quran text (required by Tanzil).
+  ///
+  /// In en, this message translates to:
+  /// **'Quran text: Tanzil Project (Uthmani, version 1.1), tanzil.net. Used verbatim under the Creative Commons Attribution 3.0 license.'**
+  String get quranTextSource;
 }
 
 class _AppLocalizationsDelegate

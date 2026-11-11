@@ -3,14 +3,25 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'home/home_shell.dart';
 import 'l10n/app_localizations.dart';
+import 'quran/quran.dart';
+import 'quran/quran_scope.dart';
+import 'quran/reading_state.dart';
 import 'settings/app_settings.dart';
 import 'theme.dart';
 
 class QandeelApp extends StatelessWidget {
-  QandeelApp({super.key, AppSettings? settings, this.now})
-    : settings = settings ?? AppSettings();
+  QandeelApp({
+    super.key,
+    required this.quran,
+    AppSettings? settings,
+    ReadingState? reading,
+    this.now,
+  }) : settings = settings ?? AppSettings(),
+       reading = reading ?? ReadingState();
 
+  final Quran quran;
   final AppSettings settings;
+  final ReadingState reading;
 
   /// For tests; defaults to the current time.
   final DateTime? now;
@@ -33,6 +44,9 @@ class QandeelApp extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
+        // QuranScope sits above the Navigator so pushed screens see it too.
+        builder: (context, child) =>
+            QuranScope(quran: quran, reading: reading, child: child!),
         home: HomeShell(settings: settings, now: now),
       ),
     );

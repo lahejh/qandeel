@@ -1,0 +1,5 @@
+# Sacred and source content must stay byte-for-byte identical to the
+# downloaded originals on every PC (Windows included). "-text" stops git from
+# ever converting line endings in these files.
+content/**            -text
+app/assets/quran/**   -text

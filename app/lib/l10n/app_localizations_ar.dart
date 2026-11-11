@@ -31,10 +31,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get comingSoon => 'قريبًا إن شاء الله';
 
   @override
-  String get quranPlaceholder =>
-      'اقرأ القرآن بترتيب مصحف المدينة، مع العلامات والبحث.';
-
-  @override
   String get azkarPlaceholder =>
       'أذكار الصباح والمساء وبعد الصلاة والنوم، مع العدّاد والمصادر.';
 
@@ -86,7 +82,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get startReading => 'ابدأ القراءة';
 
   @override
-  String get startReadingPlace => 'صفحة ١ · الجزء ١';
+  String startReadingPlace(String page, String juz) {
+    return 'صفحة $page · الجزء $juz';
+  }
 
   @override
   String get start => 'ابدأ';
@@ -105,4 +103,72 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get kidsCardSubtitle => 'الحروف والسور والألعاب';
+
+  @override
+  String get continueReading => 'تابع القراءة';
+
+  @override
+  String get continueButton => 'تابع';
+
+  @override
+  String get surahsTab => 'السور';
+
+  @override
+  String get juzTab => 'الأجزاء';
+
+  @override
+  String get bookmarksTab => 'العلامات';
+
+  @override
+  String surahTitle(String name) {
+    return 'سورة $name';
+  }
+
+  @override
+  String juzTitle(String number) {
+    return 'الجزء $number';
+  }
+
+  @override
+  String pageNumber(String number) {
+    return 'صفحة $number';
+  }
+
+  @override
+  String verseCount(String count) {
+    return '$count آية';
+  }
+
+  @override
+  String get meccan => 'مكية';
+
+  @override
+  String get medinan => 'مدنية';
+
+  @override
+  String verseRef(String surah, String verse) {
+    return 'سورة $surah، الآية $verse';
+  }
+
+  @override
+  String startsAt(String place) {
+    return 'يبدأ من $place';
+  }
+
+  @override
+  String get addBookmark => 'أضف علامة';
+
+  @override
+  String get removeBookmark => 'احذف العلامة';
+
+  @override
+  String get noBookmarks =>
+      'لا توجد علامات بعد. اضغط على آية أثناء القراءة لإضافة علامة.';
+
+  @override
+  String get sourcesTitle => 'عن التطبيق والمصادر';
+
+  @override
+  String get quranTextSource =>
+      'نص القرآن: مشروع تنزيل (الرسم العثماني، الإصدار 1.1)، tanzil.net. يُستخدم كما هو دون تغيير وفق رخصة المشاع الإبداعي (نسب المصنف 3.0).';
 }

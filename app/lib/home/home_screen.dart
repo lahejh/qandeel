@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../l10n/app_localizations.dart';
+import '../quran/quran_index_screen.dart';
+import '../quran/quran_scope.dart';
 import '../theme.dart';
 
 /// Home dashboard: what you need right now.
@@ -9,7 +11,8 @@ import '../theme.dart';
 /// - Azkar card: morning or evening depending on the time.
 /// - Memorize and Kids shortcuts.
 ///
-/// Reading progress is not stored yet, so the top card starts at Al-Fatiha.
+/// The top card says "Start reading" (page 1) until the reader is opened,
+/// then "Continue reading" at the last page read.
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key, required this.onOpenTab, this.now});
 
@@ -44,7 +47,7 @@ class HomeScreen extends StatelessWidget {
           style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
         ),
         const SizedBox(height: 16),
-        _ReadingCard(onStart: () => onOpenTab(1)),
+        const _ReadingCard(),
         const SizedBox(height: 16),
         _RowCard(
           icon: isEveningAzkar
@@ -99,13 +102,17 @@ class HomeScreen extends StatelessWidget {
 /// Large card with artwork. The artwork's calm side is on the left, so it is
 /// mirrored in right-to-left languages to keep text on the calm side.
 class _ReadingCard extends StatelessWidget {
-  const _ReadingCard({required this.onStart});
-
-  final VoidCallback onStart;
+  const _ReadingCard();
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
+    final scope = QuranScope.of(context);
+    final lastPage = scope.reading.lastReadPage;
+    final page = lastPage ?? 1;
+    final firstVerse = scope.quran.versesOnPage(page).first.ref;
+    final surah = scope.quran.surah(firstVerse.surah);
+    final juz = scope.quran.juzOf(firstVerse);
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final isRtl = Directionality.of(context) == TextDirection.rtl;
     final textColor = isDark ? Colors.white : QandeelColors.dayText;
@@ -143,7 +150,9 @@ class _ReadingCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        l10n.startReading,
+                        lastPage == null
+                            ? l10n.startReading
+                            : l10n.continueReading,
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
@@ -153,7 +162,8 @@ class _ReadingCard extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'سورة الفاتحة',
+                        // Arabic surah name from Tanzil's metadata.
+                        'سورة ${surah.nameArabic}',
                         textDirection: TextDirection.rtl,
                         style: TextStyle(
                           fontFamily: headingArabicFont,
@@ -163,12 +173,15 @@ class _ReadingCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        l10n.startReadingPlace,
+                        l10n.startReadingPlace(
+                          localNumber(context, page),
+                          localNumber(context, juz),
+                        ),
                         style: TextStyle(fontSize: 14, color: mutedColor),
                       ),
                       const SizedBox(height: 22),
                       FilledButton.icon(
-                        onPressed: onStart,
+                        onPressed: () => openReader(context, page),
                         style: FilledButton.styleFrom(
                           backgroundColor: isDark
                               ? QandeelColors.gold
@@ -186,7 +199,9 @@ class _ReadingCard extends StatelessWidget {
                           ),
                         ),
                         icon: const Icon(Icons.play_arrow_rounded, size: 20),
-                        label: Text(l10n.start),
+                        label: Text(
+                          lastPage == null ? l10n.start : l10n.continueButton,
+                        ),
                       ),
                     ],
                   ),

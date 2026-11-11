@@ -33,6 +33,10 @@ flutter:
   assets:
     - assets/images/home_day.jpg
     - assets/images/home_night.jpg
+    # Verified Quran text + metadata: exact copies of content/quran/ (never
+    # edit; a test checks the copies are identical). See content/quran/SOURCE.md.
+    - assets/quran/quran-uthmani.txt
+    - assets/quran/quran-data.xml
 
   # Bundled fonts (SIL OFL 1.1) — never downloaded at runtime.
   fonts:

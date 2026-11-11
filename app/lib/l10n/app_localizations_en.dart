@@ -31,10 +31,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get comingSoon => 'Coming soon, in sha Allah';
 
   @override
-  String get quranPlaceholder =>
-      'Read the Quran in the Madinah Mushaf layout, with bookmarks and search.';
-
-  @override
   String get azkarPlaceholder =>
       'Morning, evening, after-prayer and sleep azkar, with counters and references.';
 
@@ -86,7 +82,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get startReading => 'START READING';
 
   @override
-  String get startReadingPlace => 'Page 1 · Juz 1';
+  String startReadingPlace(String page, String juz) {
+    return 'Page $page · Juz $juz';
+  }
 
   @override
   String get start => 'Start';
@@ -105,4 +103,72 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get kidsCardSubtitle => 'Letters, surahs and games';
+
+  @override
+  String get continueReading => 'CONTINUE READING';
+
+  @override
+  String get continueButton => 'Continue';
+
+  @override
+  String get surahsTab => 'Surahs';
+
+  @override
+  String get juzTab => 'Juz';
+
+  @override
+  String get bookmarksTab => 'Bookmarks';
+
+  @override
+  String surahTitle(String name) {
+    return 'Surah $name';
+  }
+
+  @override
+  String juzTitle(String number) {
+    return 'Juz $number';
+  }
+
+  @override
+  String pageNumber(String number) {
+    return 'Page $number';
+  }
+
+  @override
+  String verseCount(String count) {
+    return '$count verses';
+  }
+
+  @override
+  String get meccan => 'Meccan';
+
+  @override
+  String get medinan => 'Medinan';
+
+  @override
+  String verseRef(String surah, String verse) {
+    return 'Surah $surah, verse $verse';
+  }
+
+  @override
+  String startsAt(String place) {
+    return 'Starts at $place';
+  }
+
+  @override
+  String get addBookmark => 'Add bookmark';
+
+  @override
+  String get removeBookmark => 'Remove bookmark';
+
+  @override
+  String get noBookmarks =>
+      'No bookmarks yet. Tap a verse while reading to bookmark it.';
+
+  @override
+  String get sourcesTitle => 'About & sources';
+
+  @override
+  String get quranTextSource =>
+      'Quran text: Tanzil Project (Uthmani, version 1.1), tanzil.net. Used verbatim under the Creative Commons Attribution 3.0 license.';
 }

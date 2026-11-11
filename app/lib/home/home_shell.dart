@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../l10n/app_localizations.dart';
+import '../quran/quran_index_screen.dart';
 import '../settings/app_settings.dart';
 import '../settings/settings_screen.dart';
 import 'home_screen.dart';
@@ -38,7 +39,6 @@ class _HomeShellState extends State<HomeShell> {
       (l10n.tabKids, Icons.mosque_outlined, Icons.mosque),
     ];
     final placeholders = {
-      1: l10n.quranPlaceholder,
       2: l10n.azkarPlaceholder,
       3: l10n.memorizePlaceholder,
       4: l10n.kidsPlaceholder,
@@ -46,6 +46,8 @@ class _HomeShellState extends State<HomeShell> {
 
     final Widget body = _index == 0
         ? HomeScreen(onOpenTab: _openTab, now: widget.now)
+        : _index == 1
+        ? const QuranIndexScreen()
         : SectionPlaceholder(
             key: ValueKey(_index),
             icon: tabs[_index].$3,
