@@ -10,7 +10,7 @@ Save a copy of every license page / permission email in Google Drive → "01 Lic
 | Quran audio (main) | King Fahd Glorious Qur'an Printing Complex | Free general use in apps permitted; credit reciter + Complex | check per-surah vs per-verse |
 | Quran audio (backup 1) | Islamic Network / alquran.cloud | Free, non-commercial redistribution | — |
 | Quran audio (backup 2) | mp3quran.net | Ask for written permission first | to request |
-| Azkar | Hisn al-Muslim (verified edition) | Check permission of each translation (e.g. IslamHouse) | candidates in docs/NEXT-STEPS.md — owner to choose |
+| Azkar | Hisn al-Muslim — data from Hisn Elmoslem App (GPL-3.0), book under the author's free-distribution permission | Credit the project; show "وقف لله تعالى"; no deletion/addition/change | imported, under verification (docs/azkar-verification.md) |
 | Hadith | HadeethEnc.com | Read Terms and Policies page; email to confirm | to request |
 | Seerah / stories | Permissioned books or own scholar-reviewed scripts | Show source for every story | — |
 | Quran font | KFGQPC (King Fahd Complex) | Credit | — |

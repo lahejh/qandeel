@@ -50,9 +50,26 @@ not version by version. Build in dependency order, test each part, commit after 
 ## Owner decisions (2026-11-11)
 - `shared_preferences`: approved. Tanzil simple-clean for search: approved.
 - `flutter_local_notifications` (azkar reminders): **not yet** — build azkar without reminders.
-- Azkar source: Claude researches candidates, owner chooses (see below). Nothing imported yet.
+- Azkar source: no emails. Shamela import declined; GPL Hisn Elmoslem database chosen with full verification.
+- Quran passages inside azkar: owner chose the book's own text exactly (changed from Tanzil).
+- Next step after azkar import: recitation audio (step 5).
 
-## Azkar source candidates (researched 2026-11-11, nothing imported)
+## Azkar — chosen source (2026-11-11)
+- Owner: no permission emails; use the GPL-3.0 database from the open-source Hisn Elmoslem app
+  (muslimpack/HisnElmoslem_App), **but verify it 100% against other sources first**.
+- Imported verbatim: `content/azkar/hisn_elmoslem.db` (+ `SOURCE.md`). Not shown in the app yet.
+- `tools/verify_azkar.py` compares all 335 entries with Shamela (author's Safir edition + his
+  footnotes) and hisnmuslim.com → `docs/azkar-verification.md`. First run: 243 identical incl.
+  diacritics, 42 diacritics differ, 34 letters differ, 16 Quran placeholders; 24 references with
+  extra text; 20 count differences; 26 special-font codes in references.
+- Next: a reviewer checks every flagged item in the printed book and fills `content/azkar/REVIEW.md`.
+- Open owner decisions: (1) Quran passages — owner chose "book's text exactly", but this database
+  stores only verse placeholders, so the book's wording is not in it; options: Tanzil Uthmani text,
+  or show only the reference; (2) how to display the special-font honorific codes; (3) reading
+  SQLite in the app needs a package (`sqflite`/`sqlite3`) or a tested lossless export to JSON;
+  (4) the developer's grading field — currently not shown.
+
+## Azkar source candidates considered (2026-11-11)
 Book: Hisn al-Muslim, Sa'id ibn Ali ibn Wahf al-Qahtani; 132 chapters, dhikr numbered 1–267.
 1. **Author's printed edition (Safir Press, Riyadh) as digitized on Shamela/Turath, shown on usul.ai**
    (https://usul.ai/t/fortress-of-the-muslim-1). Numbering matches the print; every dhikr has the
