@@ -28,3 +28,30 @@ flutter:
   uses-material-design: true
   # Generates AppLocalizations from lib/l10n/*.arb (see l10n.yaml).
   generate: true
+
+  # Artwork (no people, animals or text). See assets/images/README.md.
+  assets:
+    - assets/images/home_day.jpg
+    - assets/images/home_night.jpg
+
+  # Bundled fonts (SIL OFL 1.1) — never downloaded at runtime.
+  fonts:
+    - family: IBMPlexSans
+      fonts:
+        - asset: assets/fonts/IBMPlexSans-400.ttf
+        - asset: assets/fonts/IBMPlexSans-500.ttf
+          weight: 500
+        - asset: assets/fonts/IBMPlexSans-600.ttf
+          weight: 600
+    - family: IBMPlexSansArabic
+      fonts:
+        - asset: assets/fonts/IBMPlexSansArabic-400.ttf
+        - asset: assets/fonts/IBMPlexSansArabic-500.ttf
+          weight: 500
+        - asset: assets/fonts/IBMPlexSansArabic-600.ttf
+          weight: 600
+    - family: Amiri
+      fonts:
+        - asset: assets/fonts/Amiri-400.ttf
+        - asset: assets/fonts/Amiri-700.ttf
+          weight: 700

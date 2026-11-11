@@ -66,4 +66,43 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get aboutPromise => 'مجاني دائمًا. بلا إعلانات. بلا حساب. بلا تتبّع.';
+
+  @override
+  String get tabHome => 'الرئيسية';
+
+  @override
+  String get salam => 'السلام عليكم';
+
+  @override
+  String get greetingMorning => 'صباح الخير';
+
+  @override
+  String get greetingDay => 'طاب يومك';
+
+  @override
+  String get greetingEvening => 'مساء الخير';
+
+  @override
+  String get startReading => 'ابدأ القراءة';
+
+  @override
+  String get startReadingPlace => 'صفحة ١ · الجزء ١';
+
+  @override
+  String get start => 'ابدأ';
+
+  @override
+  String get morningAzkar => 'أذكار الصباح';
+
+  @override
+  String get eveningAzkar => 'أذكار المساء';
+
+  @override
+  String get azkarCardSubtitle => 'دقائق من الذكر';
+
+  @override
+  String get memorizeCardSubtitle => 'اختر سورة لمراجعتها';
+
+  @override
+  String get kidsCardSubtitle => 'الحروف والسور والألعاب';
 }

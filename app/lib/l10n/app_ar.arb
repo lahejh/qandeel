@@ -17,5 +17,18 @@
   "themeSystem": "مثل إعداد الجهاز",
   "themeLight": "فاتح",
   "themeDark": "داكن",
-  "aboutPromise": "مجاني دائمًا. بلا إعلانات. بلا حساب. بلا تتبّع."
+  "aboutPromise": "مجاني دائمًا. بلا إعلانات. بلا حساب. بلا تتبّع.",
+  "tabHome": "الرئيسية",
+  "salam": "السلام عليكم",
+  "greetingMorning": "صباح الخير",
+  "greetingDay": "طاب يومك",
+  "greetingEvening": "مساء الخير",
+  "startReading": "ابدأ القراءة",
+  "startReadingPlace": "صفحة ١ · الجزء ١",
+  "start": "ابدأ",
+  "morningAzkar": "أذكار الصباح",
+  "eveningAzkar": "أذكار المساء",
+  "azkarCardSubtitle": "دقائق من الذكر",
+  "memorizeCardSubtitle": "اختر سورة لمراجعتها",
+  "kidsCardSubtitle": "الحروف والسور والألعاب"
 }

@@ -205,6 +205,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Free forever. No ads. No account. No tracking.'**
   String get aboutPromise;
+
+  /// Bottom navigation tab: home dashboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get tabHome;
+
+  /// Greeting shown at the top of the home screen.
+  ///
+  /// In en, this message translates to:
+  /// **'Assalamu alaikum'**
+  String get salam;
+
+  /// Home greeting before noon.
+  ///
+  /// In en, this message translates to:
+  /// **'Good morning'**
+  String get greetingMorning;
+
+  /// Home greeting from noon until late afternoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Good afternoon'**
+  String get greetingDay;
+
+  /// Home greeting in the evening and night.
+  ///
+  /// In en, this message translates to:
+  /// **'Good evening'**
+  String get greetingEvening;
+
+  /// Label on the main home card when nothing has been read yet.
+  ///
+  /// In en, this message translates to:
+  /// **'START READING'**
+  String get startReading;
+
+  /// Where reading starts: page and juz.
+  ///
+  /// In en, this message translates to:
+  /// **'Page 1 · Juz 1'**
+  String get startReadingPlace;
+
+  /// Button that opens the Quran reader.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get start;
+
+  /// Home card title before Asr time (approx.).
+  ///
+  /// In en, this message translates to:
+  /// **'Morning azkar'**
+  String get morningAzkar;
+
+  /// Home card title in the evening.
+  ///
+  /// In en, this message translates to:
+  /// **'Evening azkar'**
+  String get eveningAzkar;
+
+  /// Subtitle on the home azkar card.
+  ///
+  /// In en, this message translates to:
+  /// **'A few minutes of remembrance'**
+  String get azkarCardSubtitle;
+
+  /// Subtitle on the home Memorize card.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a surah to revise'**
+  String get memorizeCardSubtitle;
+
+  /// Subtitle on the home Kids card.
+  ///
+  /// In en, this message translates to:
+  /// **'Letters, surahs and games'**
+  String get kidsCardSubtitle;
 }
 
 class _AppLocalizationsDelegate

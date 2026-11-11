@@ -3,15 +3,19 @@ import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../settings/app_settings.dart';
 import '../settings/settings_screen.dart';
+import 'home_screen.dart';
 import 'section_placeholder.dart';
 
-/// Main screen with the four sections: Quran, Azkar, Memorize, Kids.
+/// Main screen with five tabs: Home, Quran, Azkar, Memorize, Kids.
 ///
 /// Icons are objects only (no faces, people or animals) — see CLAUDE.md.
 class HomeShell extends StatefulWidget {
-  const HomeShell({super.key, required this.settings});
+  const HomeShell({super.key, required this.settings, this.now});
 
   final AppSettings settings;
+
+  /// For tests; defaults to the current time.
+  final DateTime? now;
 
   @override
   State<HomeShell> createState() => _HomeShellState();
@@ -20,41 +24,38 @@ class HomeShell extends StatefulWidget {
 class _HomeShellState extends State<HomeShell> {
   int _index = 0;
 
+  void _openTab(int i) => setState(() => _index = i);
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
 
-    final sections = [
-      (
-        l10n.tabQuran,
-        Icons.menu_book_outlined,
-        Icons.menu_book,
-        l10n.quranPlaceholder,
-      ),
-      (
-        l10n.tabAzkar,
-        Icons.light_mode_outlined,
-        Icons.light_mode,
-        l10n.azkarPlaceholder,
-      ),
-      (
-        l10n.tabMemorize,
-        Icons.repeat,
-        Icons.repeat_on,
-        l10n.memorizePlaceholder,
-      ),
-      (
-        l10n.tabKids,
-        Icons.extension_outlined,
-        Icons.extension,
-        l10n.kidsPlaceholder,
-      ),
+    final tabs = [
+      (l10n.tabHome, Icons.home_outlined, Icons.home),
+      (l10n.tabQuran, Icons.menu_book_outlined, Icons.menu_book),
+      (l10n.tabAzkar, Icons.light_mode_outlined, Icons.light_mode),
+      (l10n.tabMemorize, Icons.repeat, Icons.repeat_on),
+      (l10n.tabKids, Icons.mosque_outlined, Icons.mosque),
     ];
-    final current = sections[_index];
+    final placeholders = {
+      1: l10n.quranPlaceholder,
+      2: l10n.azkarPlaceholder,
+      3: l10n.memorizePlaceholder,
+      4: l10n.kidsPlaceholder,
+    };
+
+    final Widget body = _index == 0
+        ? HomeScreen(onOpenTab: _openTab, now: widget.now)
+        : SectionPlaceholder(
+            key: ValueKey(_index),
+            icon: tabs[_index].$3,
+            title: tabs[_index].$1,
+            description: placeholders[_index]!,
+          );
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.appTitle),
+        title: _index == 0 ? null : Text(tabs[_index].$1),
         actions: [
           IconButton(
             icon: const Icon(Icons.settings_outlined),
@@ -65,23 +66,19 @@ class _HomeShellState extends State<HomeShell> {
               ),
             ),
           ),
+          const SizedBox(width: 8),
         ],
       ),
-      body: SectionPlaceholder(
-        key: ValueKey(_index),
-        icon: current.$3,
-        title: current.$1,
-        description: current.$4,
-      ),
+      body: SafeArea(top: false, child: body),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _index,
-        onDestinationSelected: (i) => setState(() => _index = i),
+        onDestinationSelected: _openTab,
         destinations: [
-          for (final s in sections)
+          for (final t in tabs)
             NavigationDestination(
-              icon: Icon(s.$2),
-              selectedIcon: Icon(s.$3),
-              label: s.$1,
+              icon: Icon(t.$2),
+              selectedIcon: Icon(t.$3),
+              label: t.$1,
             ),
         ],
       ),

@@ -7,10 +7,13 @@ import 'settings/app_settings.dart';
 import 'theme.dart';
 
 class QandeelApp extends StatelessWidget {
-  QandeelApp({super.key, AppSettings? settings})
+  QandeelApp({super.key, AppSettings? settings, this.now})
     : settings = settings ?? AppSettings();
 
   final AppSettings settings;
+
+  /// For tests; defaults to the current time.
+  final DateTime? now;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +33,7 @@ class QandeelApp extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        home: HomeShell(settings: settings),
+        home: HomeShell(settings: settings, now: now),
       ),
     );
   }

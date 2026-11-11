@@ -1,39 +1,127 @@
 {
   "@@locale": "en",
   "appTitle": "Qandeel",
-  "@appTitle": {"description": "App name shown in the title bar and launcher."},
+  "@appTitle": {
+    "description": "App name shown in the title bar and launcher."
+  },
   "tabQuran": "Quran",
-  "@tabQuran": {"description": "Bottom navigation tab: Quran reader."},
+  "@tabQuran": {
+    "description": "Bottom navigation tab: Quran reader."
+  },
   "tabAzkar": "Azkar",
-  "@tabAzkar": {"description": "Bottom navigation tab: daily remembrances."},
+  "@tabAzkar": {
+    "description": "Bottom navigation tab: daily remembrances."
+  },
   "tabMemorize": "Memorize",
-  "@tabMemorize": {"description": "Bottom navigation tab: memorization tools."},
+  "@tabMemorize": {
+    "description": "Bottom navigation tab: memorization tools."
+  },
   "tabKids": "Kids",
-  "@tabKids": {"description": "Bottom navigation tab: kids section."},
+  "@tabKids": {
+    "description": "Bottom navigation tab: kids section."
+  },
   "settings": "Settings",
-  "@settings": {"description": "Settings screen title and button tooltip."},
+  "@settings": {
+    "description": "Settings screen title and button tooltip."
+  },
   "comingSoon": "Coming soon, in sha Allah",
-  "@comingSoon": {"description": "Placeholder text for sections not built yet."},
+  "@comingSoon": {
+    "description": "Placeholder text for sections not built yet."
+  },
   "quranPlaceholder": "Read the Quran in the Madinah Mushaf layout, with bookmarks and search.",
-  "@quranPlaceholder": {"description": "Placeholder description of the Quran section."},
+  "@quranPlaceholder": {
+    "description": "Placeholder description of the Quran section."
+  },
   "azkarPlaceholder": "Morning, evening, after-prayer and sleep azkar, with counters and references.",
-  "@azkarPlaceholder": {"description": "Placeholder description of the Azkar section."},
+  "@azkarPlaceholder": {
+    "description": "Placeholder description of the Azkar section."
+  },
   "memorizePlaceholder": "Repeat, hide-and-recite, and a gentle revision plan.",
-  "@memorizePlaceholder": {"description": "Placeholder description of the Memorize section."},
+  "@memorizePlaceholder": {
+    "description": "Placeholder description of the Memorize section."
+  },
   "kidsPlaceholder": "Letters, short surahs, duas and calm learning games for children.",
-  "@kidsPlaceholder": {"description": "Placeholder description of the Kids section."},
+  "@kidsPlaceholder": {
+    "description": "Placeholder description of the Kids section."
+  },
   "language": "Language",
-  "@language": {"description": "Settings: language option label."},
+  "@language": {
+    "description": "Settings: language option label."
+  },
   "languageSystem": "Same as phone",
-  "@languageSystem": {"description": "Settings: follow the device language."},
+  "@languageSystem": {
+    "description": "Settings: follow the device language."
+  },
   "theme": "Theme",
-  "@theme": {"description": "Settings: theme option label."},
+  "@theme": {
+    "description": "Settings: theme option label."
+  },
   "themeSystem": "Same as phone",
-  "@themeSystem": {"description": "Settings: follow the device light/dark setting."},
+  "@themeSystem": {
+    "description": "Settings: follow the device light/dark setting."
+  },
   "themeLight": "Light",
-  "@themeLight": {"description": "Settings: light theme."},
+  "@themeLight": {
+    "description": "Settings: light theme."
+  },
   "themeDark": "Dark",
-  "@themeDark": {"description": "Settings: dark theme."},
+  "@themeDark": {
+    "description": "Settings: dark theme."
+  },
   "aboutPromise": "Free forever. No ads. No account. No tracking.",
-  "@aboutPromise": {"description": "Short promise shown in settings/about."}
+  "@aboutPromise": {
+    "description": "Short promise shown in settings/about."
+  },
+  "tabHome": "Home",
+  "@tabHome": {
+    "description": "Bottom navigation tab: home dashboard."
+  },
+  "salam": "Assalamu alaikum",
+  "@salam": {
+    "description": "Greeting shown at the top of the home screen."
+  },
+  "greetingMorning": "Good morning",
+  "@greetingMorning": {
+    "description": "Home greeting before noon."
+  },
+  "greetingDay": "Good afternoon",
+  "@greetingDay": {
+    "description": "Home greeting from noon until late afternoon."
+  },
+  "greetingEvening": "Good evening",
+  "@greetingEvening": {
+    "description": "Home greeting in the evening and night."
+  },
+  "startReading": "START READING",
+  "@startReading": {
+    "description": "Label on the main home card when nothing has been read yet."
+  },
+  "startReadingPlace": "Page 1 · Juz 1",
+  "@startReadingPlace": {
+    "description": "Where reading starts: page and juz."
+  },
+  "start": "Start",
+  "@start": {
+    "description": "Button that opens the Quran reader."
+  },
+  "morningAzkar": "Morning azkar",
+  "@morningAzkar": {
+    "description": "Home card title before Asr time (approx.)."
+  },
+  "eveningAzkar": "Evening azkar",
+  "@eveningAzkar": {
+    "description": "Home card title in the evening."
+  },
+  "azkarCardSubtitle": "A few minutes of remembrance",
+  "@azkarCardSubtitle": {
+    "description": "Subtitle on the home azkar card."
+  },
+  "memorizeCardSubtitle": "Choose a surah to revise",
+  "@memorizeCardSubtitle": {
+    "description": "Subtitle on the home Memorize card."
+  },
+  "kidsCardSubtitle": "Letters, surahs and games",
+  "@kidsCardSubtitle": {
+    "description": "Subtitle on the home Kids card."
+  }
 }

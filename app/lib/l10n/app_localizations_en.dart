@@ -66,4 +66,43 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get aboutPromise => 'Free forever. No ads. No account. No tracking.';
+
+  @override
+  String get tabHome => 'Home';
+
+  @override
+  String get salam => 'Assalamu alaikum';
+
+  @override
+  String get greetingMorning => 'Good morning';
+
+  @override
+  String get greetingDay => 'Good afternoon';
+
+  @override
+  String get greetingEvening => 'Good evening';
+
+  @override
+  String get startReading => 'START READING';
+
+  @override
+  String get startReadingPlace => 'Page 1 · Juz 1';
+
+  @override
+  String get start => 'Start';
+
+  @override
+  String get morningAzkar => 'Morning azkar';
+
+  @override
+  String get eveningAzkar => 'Evening azkar';
+
+  @override
+  String get azkarCardSubtitle => 'A few minutes of remembrance';
+
+  @override
+  String get memorizeCardSubtitle => 'Choose a surah to revise';
+
+  @override
+  String get kidsCardSubtitle => 'Letters, surahs and games';
 }
