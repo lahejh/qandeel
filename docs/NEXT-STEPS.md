@@ -88,6 +88,21 @@ Book: Hisn al-Muslim, Sa'id ibn Ali ibn Wahf al-Qahtani; 132 chapters, dhikr num
 Note: some azkar are whole Quran passages (Ayat al-Kursi, the three Quls). Proposal: show those from
 the Tanzil Uthmani text by verse reference, not from the azkar file (CLAUDE.md §1).
 
+## Step 5 — Recitation audio: research (2026-11-11)
+- **King Fahd Complex (main source):** usage license (old site, qurancomplex.gov.sa/en/?p=3979) offered
+  the recordings for free general use in apps, websites and broadcasting. The old site offered per
+  reciter "whole mushaf as ayat" and "as surahs" zips (≈0.7–1.2 GB each) — so per-verse files exist —
+  for Hafs murattal: Ali Al-Huthaify, Mohammed Ayyoub, Maher Al-Muaiqly, Khalid Al-Muhanna (+ other
+  riwayat). **As of 2026-11-11 the site is rebuilt ("trial launch"); recitations, fonts and the
+  developer platform are all "coming soon". No official download is reachable now.** The old pages
+  (e.g. /sounds-hafs-huthify/) return 404, also in a real browser.
+- **Islamic Network / alquran.cloud (backup 1):** per-verse CDN
+  `https://cdn.islamic.network/quran/audio/{bitrate}/{edition}/{1..6236}.mp3` (global verse number),
+  ETag = MD5 (usable as checksum). Has the same Hafs reciters as the Complex: `ar.hudhaify`,
+  `ar.mahermuaiqly`, `ar.muhammadayyoub` (+ Husary, Minshawi-style others). Files come from
+  EveryAyah; terms: free, key-less, cache aggressively; recordings keep their own copyrights.
+- mp3quran.net (backup 2): still needs written permission — owner chose no emails for now.
+
 ## Still open from step 1
 - Quran font is Amiri for now. Switch to KFGQPC Uthmanic font once its license page is saved to Drive.
 - Exact 15-line Madinah page layout (needs QUL line-layout data + KFGQPC fonts; check licenses first).
