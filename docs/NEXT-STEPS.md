@@ -1,4 +1,4 @@
-# Next steps — handover (updated 2026-11-11, after step 1)
+# Next steps — handover (updated 2026-11-11, after steps 1, 2 and saved settings)
 
 Read `CLAUDE.md` (rules) and `docs/PLAN.md` (full plan) first.
 
@@ -39,6 +39,37 @@ not version by version. Build in dependency order, test each part, commit after 
 6. Memorization tools, then the Listen engine (on-device; ship only if accuracy test passes).
 7. Kids section + games (spot-the-difference engine with random layered scenes, word order, build-a-masjid, jigsaw).
 8. Library (HadeethEnc etc.), then release prep (final icon files, store listings, privacy page, test builds).
+
+- **Saved on device (part of step 4, owner approved `shared_preferences` 2026-11-11):** settings
+  (language, theme, Quran text size), last-read page and bookmarks. All storage goes through
+  `lib/storage/local_store.dart`; every stored key is listed in `StoreKeys`.
+- **Step 2 — Search (done):** Tanzil Simple Clean 1.1 added verbatim (owner approved) and used only
+  for matching; results show Uthmani text. Surah names (Arabic/English/transliterated/number),
+  references like 2:255, Arabic words without diacritics. Search icon on the Quran tab.
+
+## Owner decisions (2026-11-11)
+- `shared_preferences`: approved. Tanzil simple-clean for search: approved.
+- `flutter_local_notifications` (azkar reminders): **not yet** — build azkar without reminders.
+- Azkar source: Claude researches candidates, owner chooses (see below). Nothing imported yet.
+
+## Azkar source candidates (researched 2026-11-11, nothing imported)
+Book: Hisn al-Muslim, Sa'id ibn Ali ibn Wahf al-Qahtani; 132 chapters, dhikr numbered 1–267.
+1. **Author's printed edition (Safir Press, Riyadh) as digitized on Shamela/Turath, shown on usul.ai**
+   (https://usul.ai/t/fortress-of-the-muslim-1). Numbering matches the print; every dhikr has the
+   author's reference footnote. Arabic only; repeat counts are inside the text (e.g. "ثلاثًا").
+   No license stated on usul.ai (site footer: Seemore Foundation). Needs: confirm the book's own
+   distribution statement + ask usul.ai/Turath for a structured copy or permission.
+2. **hisnmuslim.com JSON API** (`/api/ar/husn_ar.json`, `/api/ar/{chapter}.json`, also `/api/en/…`).
+   Arabic + English (+ other languages on the site), REPEAT field, per-dhikr audio (Hamad Al-Duraihim).
+   IDs follow the book's numbering (checked: 1–4 waking, 99+ sleep). **No references**, no operator
+   or terms on the site → needs a permission email; references would have to come from the book.
+3. **IslamHouse "حصن المسلم - إصدار 2"** (https://enc.islamhouse.com/en/books/819/1). Same group as
+   QuranEnc/HadeethEnc; versioned; author's takhrij; many reviewed translations on islamhouse.com.
+   No structured download found → email IslamHouse (already on the owner to-do list).
+4. sunnah.com Hisn al-Muslim (Arabic + English + references): copies on GitHub/Hugging Face are
+   scrapes with unclear licenses — not recommended.
+Note: some azkar are whole Quran passages (Ayat al-Kursi, the three Quls). Proposal: show those from
+the Tanzil Uthmani text by verse reference, not from the azkar file (CLAUDE.md §1).
 
 ## Still open from step 1
 - Quran font is Amiri for now. Switch to KFGQPC Uthmanic font once its license page is saved to Drive.
