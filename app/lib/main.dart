@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'app.dart';
 import 'quran/quran.dart';
+import 'quran/quran_search.dart';
 import 'quran/reading_state.dart';
 import 'settings/app_settings.dart';
 import 'storage/local_store.dart';
@@ -14,11 +15,13 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // The verified Quran text is bundled with the app and loaded once.
   final quran = await Quran.load();
+  final search = await QuranSearch.load(quran);
   // Saved on this phone only (settings, last page, bookmarks).
   final store = await DeviceStore.open();
   runApp(
     QandeelApp(
       quran: quran,
+      search: search,
       settings: AppSettings.load(store),
       reading: ReadingState.load(store),
     ),

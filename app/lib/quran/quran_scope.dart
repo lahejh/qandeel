@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import '../settings/app_settings.dart';
 import 'quran.dart';
+import 'quran_search.dart';
 import 'reading_state.dart';
 
 /// Makes the loaded [Quran] and the [ReadingState] available to every screen.
@@ -11,6 +12,7 @@ class QuranScope extends InheritedNotifier<ReadingState> {
     super.key,
     required this.quran,
     required this.settings,
+    required this.search,
     required ReadingState reading,
     required super.child,
   }) : super(notifier: reading);
@@ -19,6 +21,9 @@ class QuranScope extends InheritedNotifier<ReadingState> {
 
   /// App settings (Quran text size is used by the reader).
   final AppSettings settings;
+
+  /// Search index (surah names, verses).
+  final QuranSearch search;
 
   ReadingState get reading => notifier!;
 

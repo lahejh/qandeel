@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../l10n/app_localizations.dart';
 import '../quran/quran_index_screen.dart';
+import '../quran/search_screen.dart';
 import '../settings/app_settings.dart';
 import '../settings/settings_screen.dart';
 import 'home_screen.dart';
@@ -59,6 +60,14 @@ class _HomeShellState extends State<HomeShell> {
       appBar: AppBar(
         title: _index == 0 ? null : Text(tabs[_index].$1),
         actions: [
+          if (_index == 1)
+            IconButton(
+              icon: const Icon(Icons.search),
+              tooltip: l10n.search,
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(builder: (_) => const SearchScreen()),
+              ),
+            ),
           IconButton(
             icon: const Icon(Icons.settings_outlined),
             tooltip: l10n.settings,

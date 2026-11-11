@@ -236,5 +236,43 @@
   "textSize": "Text size",
   "@textSize": {
     "description": "Reader: Quran text size control."
+  },
+  "search": "Search",
+  "@search": {
+    "description": "Search button tooltip."
+  },
+  "searchHint": "Surah, 2:255, or Arabic words",
+  "@searchHint": {
+    "description": "Search field hint."
+  },
+  "searchHelp": "Search by surah name or number, a verse like 2:255, or Arabic words (no need for diacritics).",
+  "@searchHelp": {
+    "description": "Help text before typing."
+  },
+  "noResults": "No results.",
+  "@noResults": {
+    "description": "Search found nothing."
+  },
+  "clearSearch": "Clear",
+  "@clearSearch": {
+    "description": "Clear the search field."
+  },
+  "verseResults": "Verses ({count})",
+  "@verseResults": {
+    "description": "Header for verse results with total count.",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "moreResults": "Showing the first {count}. Add another word to narrow the search.",
+  "@moreResults": {
+    "description": "Shown when there are more results than listed.",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
   }
 }

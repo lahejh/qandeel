@@ -391,6 +391,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Text size'**
   String get textSize;
+
+  /// Search button tooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// Search field hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Surah, 2:255, or Arabic words'**
+  String get searchHint;
+
+  /// Help text before typing.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by surah name or number, a verse like 2:255, or Arabic words (no need for diacritics).'**
+  String get searchHelp;
+
+  /// Search found nothing.
+  ///
+  /// In en, this message translates to:
+  /// **'No results.'**
+  String get noResults;
+
+  /// Clear the search field.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get clearSearch;
+
+  /// Header for verse results with total count.
+  ///
+  /// In en, this message translates to:
+  /// **'Verses ({count})'**
+  String verseResults(String count);
+
+  /// Shown when there are more results than listed.
+  ///
+  /// In en, this message translates to:
+  /// **'Showing the first {count}. Add another word to narrow the search.'**
+  String moreResults(String count);
 }
 
 class _AppLocalizationsDelegate

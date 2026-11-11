@@ -174,4 +174,30 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get textSize => 'Text size';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get searchHint => 'Surah, 2:255, or Arabic words';
+
+  @override
+  String get searchHelp =>
+      'Search by surah name or number, a verse like 2:255, or Arabic words (no need for diacritics).';
+
+  @override
+  String get noResults => 'No results.';
+
+  @override
+  String get clearSearch => 'Clear';
+
+  @override
+  String verseResults(String count) {
+    return 'Verses ($count)';
+  }
+
+  @override
+  String moreResults(String count) {
+    return 'Showing the first $count. Add another word to narrow the search.';
+  }
 }

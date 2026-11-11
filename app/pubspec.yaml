@@ -38,6 +38,7 @@ flutter:
     # edit; a test checks the copies are identical). See content/quran/SOURCE.md.
     - assets/quran/quran-uthmani.txt
     - assets/quran/quran-data.xml
+    - assets/quran/quran-simple-clean.txt
 
   # Bundled fonts (SIL OFL 1.1) — never downloaded at runtime.
   fonts:

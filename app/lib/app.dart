@@ -5,6 +5,7 @@ import 'home/home_shell.dart';
 import 'l10n/app_localizations.dart';
 import 'quran/quran.dart';
 import 'quran/quran_scope.dart';
+import 'quran/quran_search.dart';
 import 'quran/reading_state.dart';
 import 'settings/app_settings.dart';
 import 'theme.dart';
@@ -13,6 +14,7 @@ class QandeelApp extends StatelessWidget {
   QandeelApp({
     super.key,
     required this.quran,
+    required this.search,
     AppSettings? settings,
     ReadingState? reading,
     this.now,
@@ -20,6 +22,7 @@ class QandeelApp extends StatelessWidget {
        reading = reading ?? ReadingState();
 
   final Quran quran;
+  final QuranSearch search;
   final AppSettings settings;
   final ReadingState reading;
 
@@ -48,6 +51,7 @@ class QandeelApp extends StatelessWidget {
         builder: (context, child) => QuranScope(
           quran: quran,
           settings: settings,
+          search: search,
           reading: reading,
           child: child!,
         ),

@@ -19,9 +19,12 @@ const quranFont = 'Amiri';
 /// Tap a verse to bookmark it. The page being read is saved as the last-read
 /// position. The text-size button changes the Quran text size (saved).
 class ReaderScreen extends StatefulWidget {
-  const ReaderScreen({super.key, required this.initialPage});
+  const ReaderScreen({super.key, required this.initialPage, this.highlight});
 
   final int initialPage;
+
+  /// A verse to highlight (e.g. opened from search), or `null`.
+  final VerseRef? highlight;
 
   @override
   State<ReaderScreen> createState() => _ReaderScreenState();
@@ -140,8 +143,11 @@ class _ReaderScreenState extends State<ReaderScreen> {
             onPageChanged: _onPageChanged,
             itemBuilder: (context, index) => ListenableBuilder(
               listenable: QuranScope.of(context).settings,
-              builder: (context, _) =>
-                  MushafPage(key: ValueKey(index), page: index + 1),
+              builder: (context, _) => MushafPage(
+                key: ValueKey(index),
+                page: index + 1,
+                highlight: widget.highlight,
+              ),
             ),
           ),
         ),
@@ -159,9 +165,10 @@ String surahName(BuildContext context, Surah s) =>
 
 /// One mushaf page.
 class MushafPage extends StatefulWidget {
-  const MushafPage({super.key, required this.page});
+  const MushafPage({super.key, required this.page, this.highlight});
 
   final int page;
+  final VerseRef? highlight;
 
   @override
   State<MushafPage> createState() => _MushafPageState();
@@ -284,7 +291,7 @@ class _MushafPageState extends State<MushafPage> {
         }
       }
       final marked = scope.reading.isBookmarked(v.ref);
-      final selected = _selected == v.ref;
+      final selected = _selected == v.ref || widget.highlight == v.ref;
       spans.add(
         TextSpan(
           text: v.displayText,

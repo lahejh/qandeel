@@ -5,14 +5,21 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:qandeel/app.dart';
 import 'package:qandeel/quran/quran.dart';
+import 'package:qandeel/quran/quran_search.dart';
+import 'package:qandeel/quran/search_screen.dart';
 import 'package:qandeel/quran/reader_screen.dart';
 import 'package:qandeel/quran/reading_state.dart';
 import 'package:qandeel/settings/app_settings.dart';
+import 'package:qandeel/storage/local_store.dart';
 
 // Loaded once from the bundled verified files.
 final quran = Quran.parse(
   text: File('assets/quran/quran-uthmani.txt').readAsStringSync(),
   metadata: File('assets/quran/quran-data.xml').readAsStringSync(),
+);
+final search = QuranSearch.parse(
+  quran,
+  File('assets/quran/quran-simple-clean.txt').readAsStringSync(),
 );
 
 final morning = DateTime(2026, 11, 11, 8);
@@ -25,6 +32,7 @@ QandeelApp app(
   ReadingState? reading,
 }) => QandeelApp(
   quran: quran,
+  search: search,
   settings: AppSettings(locale: Locale(lang), themeMode: theme),
   reading: reading,
   now: now ?? morning,
@@ -166,7 +174,12 @@ void main() {
   testWidgets('Settings can switch language and theme', (tester) async {
     final settings = AppSettings(locale: const Locale('en'));
     await tester.pumpWidget(
-      QandeelApp(quran: quran, settings: settings, now: morning),
+      QandeelApp(
+        quran: quran,
+        search: search,
+        settings: settings,
+        now: morning,
+      ),
     );
     await tester.pumpAndSettle();
 
@@ -201,5 +214,72 @@ void main() {
     await tester.pumpAndSettle();
     await tester.scrollUntilVisible(find.textContaining('Tanzil'), 100);
     expect(find.textContaining('tanzil.net'), findsOneWidget);
+  });
+
+  testWidgets('Search finds a surah and a verse and opens the reader', (
+    tester,
+  ) async {
+    final reading = ReadingState();
+    await tester.pumpWidget(app('en', reading: reading));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Quran'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('Search'));
+    await tester.pumpAndSettle();
+    expect(find.byType(SearchScreen), findsOneWidget);
+    expect(find.textContaining('no need for diacritics'), findsOneWidget);
+
+    await tester.enterText(find.byType(TextField), 'kahf');
+    await tester.pumpAndSettle();
+    expect(find.text('Surah Al-Kahf'), findsOneWidget);
+
+    await tester.enterText(find.byType(TextField), '2:255');
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Surah Al-Baqara, verse 255'));
+    await tester.pumpAndSettle();
+    expect(find.byType(ReaderScreen), findsOneWidget);
+    expect(reading.lastReadPage, quran.pageOf(const VerseRef(2, 255)));
+  });
+
+  testWidgets('Arabic word search lists verses in Uthmani text', (
+    tester,
+  ) async {
+    await tester.pumpWidget(app('ar'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('القرآن').last);
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('بحث'));
+    await tester.pumpAndSettle();
+    // Query taken from the verified clean file (2:255).
+    final clean = File('assets/quran/quran-simple-clean.txt')
+        .readAsLinesSync()
+        .firstWhere((l) => l.startsWith('2|255|'))
+        .split('|')[2]
+        .split(' ');
+    await tester.enterText(find.byType(TextField), clean.take(4).join(' '));
+    await tester.pumpAndSettle();
+    expect(
+      find.text(quran.verse(const VerseRef(2, 255)).displayText),
+      findsOneWidget,
+    );
+  });
+
+  testWidgets('Saved state is restored when the app starts', (tester) async {
+    final store = MemoryStore({
+      StoreKeys.lastReadPage: '100',
+      StoreKeys.locale: 'ar',
+    });
+    await tester.pumpWidget(
+      QandeelApp(
+        quran: quran,
+        search: search,
+        settings: AppSettings.load(store),
+        reading: ReadingState.load(store),
+        now: morning,
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.text('تابع القراءة'), findsOneWidget);
+    expect(find.textContaining('صفحة ١٠٠'), findsOneWidget);
   });
 }

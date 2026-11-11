@@ -26,6 +26,20 @@ the first four words off for display as a header (`lib/quran/quran.dart`,
 In 95:1 and 97:1 the stored basmala begins `بِّسْمِ` (with shaddah); the header shows it
 exactly as stored.
 
+## quran-simple-clean.txt (search only — never displayed)
+- Source: Tanzil Project — https://tanzil.net
+- Text: Tanzil Quran Text (Simple Clean, Version 1.1) — the same verses without diacritics.
+  Copyright block at the end of the file.
+- License: Creative Commons Attribution 3.0 (same terms as above).
+- Download URL: `https://tanzil.net/pub/download/index.php?quranType=simple-clean&outType=txt-2&agree=true`
+- Downloaded: 2026-11-11 (owner approved using it for search, 2026-11-11)
+- Size: 781,176 bytes
+- SHA-256: `228df2a717671aeb9d2ff573002bd28d6b3f973f4bc7153554e3a81663d67610`
+- Use: only to *find* verses when the user types Arabic without diacritics. Results always show the
+  Uthmani text from quran-uthmani.txt. A test checks both files list the same 6,236 verses in the
+  same order. Like the Uthmani file, verse 1 of each surah (except 1 and 9) starts with the basmala;
+  search skips those four words so searching "بسم الله" finds 1:1 and 27:30, not every surah.
+
 ## quran-data.xml
 - Source: Tanzil Project — https://tanzil.net/res/text/metadata/quran-data.xml
 - Metadata version 1.0, "(C) 2008-2009 Tanzil.info", license cc-by.

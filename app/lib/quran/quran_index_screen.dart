@@ -6,11 +6,17 @@ import 'quran.dart';
 import 'quran_scope.dart';
 import 'reader_screen.dart';
 
-/// Opens the mushaf reader at [page].
-Future<void> openReader(BuildContext context, int page) => Navigator.of(context)
-    .push(
-      MaterialPageRoute<void>(builder: (_) => ReaderScreen(initialPage: page)),
-    );
+/// Opens the mushaf reader at [page], optionally highlighting one verse
+/// (e.g. a search result).
+Future<void> openReader(
+  BuildContext context,
+  int page, {
+  VerseRef? highlight,
+}) => Navigator.of(context).push(
+  MaterialPageRoute<void>(
+    builder: (_) => ReaderScreen(initialPage: page, highlight: highlight),
+  ),
+);
 
 /// Quran tab: lists of surahs, juz and bookmarks. Each item opens the reader
 /// at the right mushaf page.

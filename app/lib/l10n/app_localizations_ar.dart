@@ -174,4 +174,30 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get textSize => 'حجم الخط';
+
+  @override
+  String get search => 'بحث';
+
+  @override
+  String get searchHint => 'سورة، أو ٢:٢٥٥، أو كلمات';
+
+  @override
+  String get searchHelp =>
+      'ابحث باسم السورة أو رقمها، أو برقم آية مثل ٢:٢٥٥، أو بكلمات عربية (دون الحاجة إلى التشكيل).';
+
+  @override
+  String get noResults => 'لا توجد نتائج.';
+
+  @override
+  String get clearSearch => 'مسح';
+
+  @override
+  String verseResults(String count) {
+    return 'الآيات ($count)';
+  }
+
+  @override
+  String moreResults(String count) {
+    return 'تُعرض أول $count نتيجة. أضف كلمة أخرى لتضييق البحث.';
+  }
 }
