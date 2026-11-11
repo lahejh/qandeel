@@ -171,4 +171,7 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get quranTextSource =>
       'نص القرآن: مشروع تنزيل (الرسم العثماني، الإصدار 1.1)، tanzil.net. يُستخدم كما هو دون تغيير وفق رخصة المشاع الإبداعي (نسب المصنف 3.0).';
+
+  @override
+  String get textSize => 'حجم الخط';
 }

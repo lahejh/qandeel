@@ -232,5 +232,9 @@
   "quranTextSource": "Quran text: Tanzil Project (Uthmani, version 1.1), tanzil.net. Used verbatim under the Creative Commons Attribution 3.0 license.",
   "@quranTextSource": {
     "description": "Credit for the Quran text (required by Tanzil)."
+  },
+  "textSize": "Text size",
+  "@textSize": {
+    "description": "Reader: Quran text size control."
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../l10n/app_localizations.dart';
+import '../settings/app_settings.dart';
 import '../theme.dart';
 import 'quran.dart';
 import 'quran_scope.dart';
@@ -16,7 +17,7 @@ const quranFont = 'Amiri';
 /// a licensed line-layout dataset (see docs/NEXT-STEPS.md).
 ///
 /// Tap a verse to bookmark it. The page being read is saved as the last-read
-/// position.
+/// position. The text-size button changes the Quran text size (saved).
 class ReaderScreen extends StatefulWidget {
   const ReaderScreen({super.key, required this.initialPage});
 
@@ -54,6 +55,47 @@ class _ReaderScreenState extends State<ReaderScreen> {
     QuranScope.of(context).reading.lastReadPage = _page;
   }
 
+  void _showTextSize(BuildContext context) {
+    final settings = QuranScope.of(context).settings;
+    final l10n = AppLocalizations.of(context);
+    showModalBottomSheet<void>(
+      context: context,
+      showDragHandle: true,
+      builder: (_) => SafeArea(
+        child: ListenableBuilder(
+          listenable: settings,
+          builder: (context, _) => Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  l10n.textSize,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                Row(
+                  children: [
+                    const Icon(Icons.text_decrease),
+                    Expanded(
+                      child: Slider(
+                        value: settings.quranFontSize,
+                        min: AppSettings.minQuranFontSize,
+                        max: AppSettings.maxQuranFontSize,
+                        divisions: 11,
+                        onChanged: (v) => settings.quranFontSize = v,
+                      ),
+                    ),
+                    const Icon(Icons.text_increase),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
@@ -63,6 +105,13 @@ class _ReaderScreenState extends State<ReaderScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.format_size),
+            tooltip: l10n.textSize,
+            onPressed: () => _showTextSize(context),
+          ),
+        ],
         title: Column(
           children: [
             Text(
@@ -89,8 +138,11 @@ class _ReaderScreenState extends State<ReaderScreen> {
             controller: _controller,
             itemCount: Quran.pageCount,
             onPageChanged: _onPageChanged,
-            itemBuilder: (context, index) =>
-                MushafPage(key: ValueKey(index), page: index + 1),
+            itemBuilder: (context, index) => ListenableBuilder(
+              listenable: QuranScope.of(context).settings,
+              builder: (context, _) =>
+                  MushafPage(key: ValueKey(index), page: index + 1),
+            ),
           ),
         ),
       ),
@@ -187,7 +239,7 @@ class _MushafPageState extends State<MushafPage> {
 
     final textStyle = TextStyle(
       fontFamily: quranFont,
-      fontSize: 24,
+      fontSize: scope.settings.quranFontSize,
       height: 2.1,
       color: scheme.onSurface,
     );

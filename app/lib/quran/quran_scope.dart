@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+import '../settings/app_settings.dart';
 import 'quran.dart';
 import 'reading_state.dart';
 
@@ -9,11 +10,15 @@ class QuranScope extends InheritedNotifier<ReadingState> {
   const QuranScope({
     super.key,
     required this.quran,
+    required this.settings,
     required ReadingState reading,
     required super.child,
   }) : super(notifier: reading);
 
   final Quran quran;
+
+  /// App settings (Quran text size is used by the reader).
+  final AppSettings settings;
 
   ReadingState get reading => notifier!;
 

@@ -385,6 +385,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Quran text: Tanzil Project (Uthmani, version 1.1), tanzil.net. Used verbatim under the Creative Commons Attribution 3.0 license.'**
   String get quranTextSource;
+
+  /// Reader: Quran text size control.
+  ///
+  /// In en, this message translates to:
+  /// **'Text size'**
+  String get textSize;
 }
 
 class _AppLocalizationsDelegate

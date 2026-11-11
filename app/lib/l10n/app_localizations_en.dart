@@ -171,4 +171,7 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get quranTextSource =>
       'Quran text: Tanzil Project (Uthmani, version 1.1), tanzil.net. Used verbatim under the Creative Commons Attribution 3.0 license.';
+
+  @override
+  String get textSize => 'Text size';
 }

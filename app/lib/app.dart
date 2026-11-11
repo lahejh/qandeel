@@ -45,8 +45,12 @@ class QandeelApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         // QuranScope sits above the Navigator so pushed screens see it too.
-        builder: (context, child) =>
-            QuranScope(quran: quran, reading: reading, child: child!),
+        builder: (context, child) => QuranScope(
+          quran: quran,
+          settings: settings,
+          reading: reading,
+          child: child!,
+        ),
         home: HomeShell(settings: settings, now: now),
       ),
     );
